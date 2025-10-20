@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Luma — FAQ</title>
+<meta name="description" content="Domande frequenti su acquisto, contratto, conferme d’ordine e validità per consumatori e professionisti. Luma S.R.L.S." />
+  <link rel="stylesheet" href="style.css">
+<style>
+  :root{
+    --bg:#0b0d12;
+    --paper:#0f131a;
+    --ink:#e9edf5;
+    --muted:#a4aec3;
+    --brand:#7c5cff;   /* viola Luma */
+    --accent:#27e1a1;  /* verde acqua */
+    --stroke:#1e2432;
+    --radius:16px;
+    --radius-sm:12px;
+    --shadow:0 20px 60px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f6f7fb; --paper:#ffffff; --ink:#0c0f16; --muted:#5a6376; --stroke:#e6e9f2;
+      --shadow:0 22px 50px rgba(18,22,40,.08);
+      color-scheme: light;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:
+      radial-gradient(80% 60% at 85% -10%, color-mix(in srgb, var(--brand) 16%, transparent), transparent 60%),
+      radial-gradient(60% 50% at 0% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font:16px/1.75 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    letter-spacing:.2px;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:920px;margin-inline:auto;padding:24px clamp(16px,4vw,28px)}
+
+  /* Header */
+  header.site{
+    position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom:1px solid var(--stroke);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+  .brand{display:flex;align-items:center;gap:.7rem;font-weight:900}
+  .logo{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:#fff;background:
+        radial-gradient(120% 120% at 20% 20%, var(--brand), #5b3cff 45%, #241a70 100%); box-shadow:var(--shadow)}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--stroke);border-radius:12px;padding:.7rem 1rem}
+  .btn.primary{background:linear-gradient(90deg,var(--brand),color-mix(in srgb,var(--brand) 60%,var(--accent)));color:#0b0f15;border:none}
+  .btn.small{padding:.55rem .8rem;font-size:.95rem}
+
+  /* Hero */
+  .hero{
+    margin-top:10px;border:1px solid var(--stroke);border-radius:var(--radius);
+    background:
+      radial-gradient(80% 120% at 0% 0%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 60%),
+      radial-gradient(60% 120% at 100% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%),
+      var(--paper);
+    box-shadow:var(--shadow);
+    padding:26px;
+  }
+  .hero h1{margin:0 0 6px;font-size:clamp(24px,3.2vw,40px);line-height:1.1}
+  .lead{color:var(--muted); margin:.2rem 0 0}
+
+  /* Tools */
+  .tools{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px}
+  .search{
+    flex:1; min-width:220px; display:flex; gap:8px; align-items:center;
+    border:1px solid var(--stroke); border-radius:999px; padding:6px 10px; background:var(--paper)
+  }
+  .search input{all:unset; flex:1; padding:.4rem}
+  .actions{display:flex; gap:8px}
+
+  /* FAQ list */
+  .faq{
+    margin-top:16px; border:1px solid var(--stroke); border-radius:var(--radius); overflow:hidden; background:var(--paper); box-shadow:var(--shadow);
+  }
+  .qa + .qa{border-top:1px solid var(--stroke)}
+  .q{
+    width:100%; text-align:left; background:transparent; border:0; color:var(--ink);
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:16px 18px; cursor:pointer;
+  }
+  .q span{font-weight:800; font-size:1.06rem; text-align:left}
+  .caret{transition:.2s ease}
+  .body{max-height:0; overflow:hidden; transition:max-height .28s ease, opacity .25s ease; opacity:.8; background: color-mix(in srgb, var(--brand) 6%, transparent)}
+  .body.open{opacity:1}
+  .inner{padding:0 18px 16px}
+  .step{margin:.3rem 0 0 1.2rem}
+  .step li{margin:.2rem 0}
+  .muted{color:var(--muted)}
+  .link-copy{opacity:.7; border:1px solid var(--stroke); border-radius:10px; padding:.25rem .45rem; font-size:.9rem}
+  .link-copy:hover{opacity:1}
+
+  .empty{display:none; padding:16px; color:var(--muted)}
+  .foot{margin-top:16px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}
+  .foot a{text-decoration:underline dotted}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:8px}
+</style>
+</head>
+<body>
+  <header aria-label="Barra di navigazione">
+    <div class="container nav">
+      <a class="brand" href="/">
+        <img src="logo.jpeg" alt="Logo di Luma" class="logo" />
+        <span aria-label="Luma, home">Luma</span>
+        <span class="chip" title="Formazione verificata">✔︎ Certificata</span>
+      </a>
+
+      <nav aria-label="Primaria">
+        <ul>
+          <li><a href="index.html">Corsi</a></li>
+          <li><a href="/chi-siamo">Chi siamo</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Cambia tema" title="Tema chiaro/scuro">🌓</button>
+        <button id="openCart" class="icon-btn" aria-label="Apri carrello" title="Carrello">🛒</button>
+        <button class="menu-toggle icon-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri menù">☰</button>
+      </div>
+    </div>
+  </header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>FAQ</h1>
+    <p class="lead">Risposte rapide su acquisto, contratto, archiviazione e conferme d’ordine.</p>
+
+    <div class="tools">
+      <div class="search" role="search" aria-label="Cerca nelle FAQ">
+        🔎 <input id="q" placeholder="Cerca (es. contratto, lingua, conferma…)" aria-label="Cerca" />
+      </div>
+      <div class="actions">
+        <button id="expandAll" class="btn small">Apri tutto</button>
+        <button id="collapseAll" class="btn small">Chiudi tutto</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq" aria-label="Elenco domande frequenti">
+    <!-- 1 -->
+    <article class="qa" id="faq-acquisto">
+      <header class="q" aria-controls="a1" aria-expanded="false">
+        <span>1) Come posso acquistare un servizio?</span>
+        <div>
+          <button class="link-copy" data-copy="#faq-acquisto" aria-label="Copia link alla domanda">🔗</button>
+          <span class="caret">▸</span>
+        </div>
+      </header>
+      <div class="body" id="a1">
+        <div class="inner">
+          <p>L’acquisto avviene online tramite il sito ufficiale.</p>
+          <ol class="step">
+            <li>Seleziona il servizio desiderato.</li>
+            <li>Aggiungilo al carrello e completa il modulo con i dati richiesti.</li>
+            <li>Leggi attentamente e accetta i Termini e Condizioni generali.</li>
+            <li>Conferma il pagamento secondo le modalità indicate (carta, bonifico, ecc.).</li>
+            <li>Riceverai conferma d’ordine via e-mail con riepilogo e copia del contratto.</li>
+          </ol>
+          <p class="muted">Suggerimento: nella pagina <a href="checkout.html">Checkout</a> il pagamento si sblocca solo dopo l’accettazione dei Termini.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="qa" id="faq-lingua">
+      <header class="q" aria-controls="a2" aria-expanded="false">
+        <span>2) In quale lingua è redatto il contratto?</span>
+        <div>
+          <button class="link-copy" data-copy="#faq-lingua" aria-label="Copia link alla domanda">🔗</button>
+          <span class="caret">▸</span>
+        </div>
+      </header>
+      <div class="body" id="a2">
+        <div class="inner">
+          <p>Il contratto e tutte le comunicazioni con il cliente sono redatti in <b>lingua italiana</b>, salvo diverso accordo espresso tra le parti.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="qa" id="faq-archiviazione">
+      <header class="q" aria-controls="a3" aria-expanded="false">
+        <span>3) Come viene archiviato il contratto?</span>
+        <div>
+          <button class="link-copy" data-copy="#faq-archiviazione" aria-label="Copia link alla domanda">🔗</button>
+          <span class="caret">▸</span>
+        </div>
+      </header>
+      <div class="body" id="a3">
+        <div class="inner">
+          <p>Il contratto è archiviato in formato elettronico nei sistemi informatici del fornitore, accessibile solo al personale autorizzato. L’utente può richiederne copia in qualsiasi momento scrivendo all’indirizzo e-mail indicato nelle Condizioni generali.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="qa" id="faq-conferma">
+      <header class="q" aria-controls="a4" aria-expanded="false">
+        <span>4) Riceverò conferma del mio ordine?</span>
+        <div>
+          <button class="link-copy" data-copy="#faq-conferma" aria-label="Copia link alla domanda">🔗</button>
+          <span class="caret">▸</span>
+        </div>
+      </header>
+      <div class="body" id="a4">
+        <div class="inner">
+          <p>Sì. Dopo il pagamento, riceverai un’e-mail di conferma con numero d’ordine, descrizione del servizio acquistato, dati del fornitore e condizioni contrattuali applicabili.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="qa" id="faq-consumatori-professionisti">
+      <header class="q" aria-controls="a5" aria-expanded="false">
+        <span>5) Il contratto è valido per consumatori e professionisti?</span>
+        <div>
+          <button class="link-copy" data-copy="#faq-consumatori-professionisti" aria-label="Copia link alla domanda">🔗</button>
+          <span class="caret">▸</span>
+        </div>
+      </header>
+      <div class="body" id="a5">
+        <div class="inner">
+          <p>Sì, con differenze:</p>
+          <ul class="step">
+            <li><b>Consumatori</b>: godono delle tutele previste dal Codice del Consumo.</li>
+            <li><b>Professionisti / Partita IVA</b>: non beneficiano di tali tutele e non hanno diritto di recesso, salvo diverso accordo scritto.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <div id="empty" class="empty">Nessuna voce trovata. Prova con altri termini.</div>
+  </section>
+
+  <div class="foot">
+    <span>Non trovi la risposta? Scrivici: <a href="mailto:hello@marketingluma.com">hello@marketingluma.com</a></span>
+    <span><a href="termini.html">Termini</a> · <a href="privacy.html">Privacy</a></span>
+  </div>
+</main>
+
+<!-- FAQ Schema (SEO) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"Come posso acquistare un servizio?",
+      "acceptedAnswer":{"@type":"Answer","text":"L’acquisto avviene online tramite il sito ufficiale. Seleziona il servizio, aggiungilo al carrello, completa i dati, accetta i Termini e conferma il pagamento. Riceverai email di conferma con riepilogo e contratto."}
+    },
+    {
+      "@type":"Question",
+      "name":"In quale lingua è redatto il contratto?",
+      "acceptedAnswer":{"@type":"Answer","text":"Il contratto e tutte le comunicazioni con il cliente sono in lingua italiana, salvo diverso accordo tra le parti."}
+    },
+    {
+      "@type":"Question",
+      "name":"Come viene archiviato il contratto?",
+      "acceptedAnswer":{"@type":"Answer","text":"In formato elettronico sui sistemi del fornitore, accessibile solo al personale autorizzato. L’utente può richiederne copia via email."}
+    },
+    {
+      "@type":"Question",
+      "name":"Riceverò conferma del mio ordine?",
+      "acceptedAnswer":{"@type":"Answer","text":"Sì. Dopo il pagamento il cliente riceve un’email con numero d’ordine, descrizione del servizio, dati del fornitore e condizioni contrattuali."}
+    },
+    {
+      "@type":"Question",
+      "name":"Il contratto è valido per consumatori e professionisti?",
+      "acceptedAnswer":{"@type":"Answer","text":"Sì, ma con differenze: i consumatori godono delle tutele del Codice del Consumo; i professionisti/partite IVA non hanno tali tutele né diritto di recesso, salvo accordo scritto."}
+    }
+  ]
+}
+</script>
+
+<script>
+/* Accordion accessibile */
+document.querySelectorAll('.qa').forEach(block=>{
+  const header = block.querySelector('.q');
+  const caret  = block.querySelector('.caret');
+  const panel  = block.querySelector('.body');
+
+  function setOpen(open){
+    panel.classList.toggle('open', open);
+    panel.style.maxHeight = open ? panel.scrollHeight + 'px' : 0;
+    header.setAttribute('aria-expanded', open ? 'true' : 'false');
+    caret.textContent = open ? '▾' : '▸';
+  }
+  setOpen(false); // chiuso di default
+
+  header.addEventListener('click', ()=> setOpen(!panel.classList.contains('open')));
+
+  // deep-link: apri se hash corrisponde
+  if(location.hash && '#'+block.id === location.hash){ setOpen(true); block.scrollIntoView({behavior:'smooth', block:'start'}); }
+});
+
+/* Apri/Chiudi tutto */
+document.getElementById('expandAll').addEventListener('click', ()=>{
+  document.querySelectorAll('.qa .body').forEach(p=>{ p.classList.add('open'); p.style.maxHeight = p.scrollHeight + 'px'; });
+  document.querySelectorAll('.qa .q').forEach(q=> q.setAttribute('aria-expanded','true'));
+  document.querySelectorAll('.qa .caret').forEach(c=> c.textContent='▾');
+});
+document.getElementById('collapseAll').addEventListener('click', ()=>{
+  document.querySelectorAll('.qa .body').forEach(p=>{ p.classList.remove('open'); p.style.maxHeight = 0; });
+  document.querySelectorAll('.qa .q').forEach(q=> q.setAttribute('aria-expanded','false'));
+  document.querySelectorAll('.qa .caret').forEach(c=> c.textContent='▸');
+});
+
+/* Ricerca live */
+const input = document.getElementById('q');
+const faq   = document.getElementById('faq');
+const empty = document.getElementById('empty');
+input.addEventListener('input', ()=>{
+  const term = input.value.trim().toLowerCase();
+  let visible = 0;
+  faq.querySelectorAll('.qa').forEach(q=>{
+    const text = q.innerText.toLowerCase();
+    const show = !term || text.includes(term);
+    q.style.display = show ? '' : 'none';
+    if(show) visible++;
+  });
+  empty.style.display = visible ? 'none' : 'block';
+});
+
+/* Copia link domanda */
+document.querySelectorAll('.link-copy').forEach(btn=>{
+  btn.addEventListener('click', async ()=>{
+    const hash = btn.dataset.copy;
+    const url  = location.origin + location.pathname + hash;
+    try{
+      await navigator.clipboard.writeText(url);
+      btn.textContent = '✅';
+      setTimeout(()=> btn.textContent = '🔗', 1200);
+    }catch{
+      prompt('Copia il link:', url);
+    }
+  });
+});
+</script>
+</body>
+</html>

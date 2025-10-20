@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Luma — Checkout</title>
+<link rel="stylesheet" href="style.css">
 <meta name="description" content="Pagina di acquisto Luma: completa i dati, accetta i termini e procedi al pagamento." />
 <style>
   :root{
@@ -107,14 +108,27 @@
 </style>
 </head>
 <body>
-  <header class="site">
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">L</div>
-        <span>Luma</span>
-      </div>
-      <div>
-        <a class="btn" href="/" title="Torna alla Home">← Continua a navigare</a>
+  <!-- HEADER -->
+ <header aria-label="Barra di navigazione">
+    <div class="container nav">
+      <a class="brand" href="/">
+        <img src="logo.jpeg" alt="Logo di Luma" class="logo" />
+        <span aria-label="Luma, home">Luma</span>
+        <span class="chip" title="Formazione verificata">✔︎ Certificata</span>
+      </a>
+
+      <nav aria-label="Primaria">
+        <ul>
+          <li><a href="index.html">Corsi</a></li>
+          <li><a href="/chi-siamo">Chi siamo</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Cambia tema" title="Tema chiaro/scuro">🌓</button>
+        <button id="openCart" class="icon-btn" aria-label="Apri carrello" title="Carrello">🛒</button>
+        <button class="menu-toggle icon-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri menù">☰</button>
       </div>
     </div>
   </header>
@@ -191,22 +205,28 @@
               </div>
             </fieldset>
 
-            <fieldset>
-              <legend>Termini & consensi</legend>
-              <div class="terms">
-                <input id="accept" type="checkbox" required />
-                <label for="accept">
-                  Dichiaro di aver letto e accettato i
-                  <a href="termini.html" target="_blank" rel="noopener">Termini & Condizioni di acquisto</a>
-                  e la <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
-                  <br /><span class="help">Senza accettazione, non puoi procedere al pagamento.</span>
-                </label>
-              </div>
-              <div class="inline">
-                <input id="newsletter" type="checkbox" />
-                <label for="newsletter" class="muted">Voglio ricevere risorse gratuite e sconti (facoltativo).</label>
-              </div>
-            </fieldset>
+            <section class="form-section">
+  <h3>Termini &amp; consensi</h3>
+
+  <div class="consents">
+    <label class="consent">
+      <input type="checkbox" name="tc" required aria-describedby="tc-desc">
+      <span id="tc-desc">
+        Dichiaro di aver letto e accettato i
+        <a href="termini.html" target="_blank" rel="noopener">Termini &amp; Condizioni</a>
+        di acquisto e la
+        <a href="privacy" target="_blank" rel="noopener">Privacy Policy</a>.
+        Senza accettazione non puoi procedere al pagamento.
+      </span>
+    </label>
+
+    <label class="consent">
+      <input type="checkbox" name="marketing_optin">
+      <span>Voglio ricevere risorse gratuite e sconti (facoltativo).</span>
+    </label>
+  </div>
+</section>
+
 
             <!-- PAGAMENTO (bloccato finché non accetta i termini) -->
             <fieldset id="payBox" aria-disabled="true" disabled>
@@ -235,7 +255,7 @@
                 </div>
               </div>
               <div class="sep"></div>
-              <button id="payBtn" class="btn primary block" disabled>Procedi al pagamento →</button>
+              <button id="payBtn" class="btn primary block" disabled>Acquista</button>
               <div class="help">Demo: nessun addebito reale. Integra il tuo gateway (Stripe/PayPal) lato server.</div>
             </fieldset>
           </form>
@@ -280,11 +300,50 @@
       <span>Serve aiuto? <a href="mailto:hello@marketingluma.com">hello@marketingluma.com</a></span>
       <span><a href="termini.html" target="_blank" rel="noopener">Termini</a> · <a href="privacy.html" target="_blank" rel="noopener">Privacy</a></span>
     </div>
+    <footer>
+  <div class="container foot-grid">
+    <div class="foot-col">
+      <img src="logo.jpeg" alt="Logo di Luma" class="logo">
+      <p class="muted">Formazione concreta per chi vuole crescere nel Digital Marketing e nella Comunicazione.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Corsi</h4>
+      <a href="#corsi">SEO</a>
+      <a href="#corsi">Social Ads</a>
+      <a href="#corsi">Brand</a>
+      <a href="#corsi">Analytics</a>
+    </div>
+    <div class="foot-col">
+      <h4>Aziende</h4>
+      <a href="#">Formazione team</a>
+      <a href="#">Workshop</a>
+      <a href="#">Consulenza</a>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="termini.html">Termini</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+
+  <div class="container legal-info">
+    <p>
+      <strong>Luma S.R.L.S.</strong> – Sede legale: Fondamenta Rimpeto Mocenigo 2068, Venezia<br>
+      Contatti: <a href="mailto:marketing@luma.com">marketing@luma.com</a> – Tel: 041 8725435<br>
+      P.IVA: 12345670987 – Iscrizione REA: VE-4398127 – Foro competente: Venezia
+    </p>
+  </div>
+
+  <div class="container credits">
+    <span>©️ <span id="year"></span> Luma</span>
+    <span>Made with ♥️</span>
+  </div>
+</footer>
   </main>
 
 <script>
 /* ---------- Utils ---------- */
-const € = n => '€' + n.toLocaleString('it-IT', {minimumFractionDigits:0});
 
 /* ---------- Riepilogo (mock) ---------- */
 const items = [...document.querySelectorAll('#items .item')].map(row => {
@@ -297,9 +356,6 @@ function recalc(){
   const subDisc = Math.max(0, sub - discount);
   const vat = Math.round(subDisc * 0.22);
   const tot = subDisc + vat;
-  document.getElementById('sub').textContent = €(sub);
-  document.getElementById('vat').textContent = €(vat);
-  document.getElementById('tot').textContent = €(tot);
 }
 recalc();
 

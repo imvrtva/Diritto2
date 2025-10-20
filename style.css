@@ -14,6 +14,9 @@
     --radius-sm: 10px;
     --radius-xs: 8px;
     color-scheme: dark light;
+      --paper: var(--surface);
+  --ink: var(--text);
+  --accent: var(--brand-2);
 }
 .logo {
   height: 66px;
@@ -260,3 +263,210 @@ footer{
 #toTop.show{opacity:1; pointer-events:auto}
 /* Focus visible */
 :focus-visible{outline:2px solid var(--brand-2); outline-offset:3px; border-radius:8px}
+/* ===== Add-ons: Lettura, TOC, pagine "paper" (Termini/FAQ) ===== */
+
+/* Barra di avanzamento lettura (id: #progress nell'HTML) */
+.progress{
+  position:fixed; inset:0 0 auto 0; height:4px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  transform: scaleX(0); transform-origin: left; z-index: 100;
+}
+
+/* Indice rapido (TOC) */
+.toc{
+  position:sticky; bottom:16px; margin:16px 0 0;
+  display:flex; gap:8px; overflow:auto; padding-bottom:2px;
+}
+.toc a{
+  white-space:nowrap; border:1px solid var(--stroke);
+  border-radius:999px; padding:.45rem .7rem; color:var(--muted);
+}
+.toc a.active{
+  background: color-mix(in srgb, var(--brand) 18%, transparent);
+  color: var(--text); border-color: transparent;
+}
+
+/* Contenuto “a carta” per pagine legali/FAQ */
+.paper{
+  margin-top: 12px;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 8px 0; /* le sezioni interne gestiscono il padding */
+}
+.paper > section{
+  padding: 18px 20px;
+  border-top: 1px solid var(--stroke);
+  background: var(--surface);
+}
+.paper > section:first-of-type{
+  border-top:none;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+.paper > section:last-of-type{
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+.paper h2{ margin:.2rem 0 0; font-size:1.25rem; line-height:1.2 }
+.paper p{ margin:.6rem 0 }
+
+/* Elementi utili nel testo */
+.lead{ color: var(--muted) }
+.note{
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+  border:1px solid var(--stroke);
+  border-radius: 12px;
+  padding: .8rem 1rem; margin:.7rem 0;
+}
+.divider{ height:1px; background:var(--stroke); margin:16px 0 }
+
+/* Optional: tweak hero “card” per pagine testuali */
+.hero-card{
+  border:1px solid var(--stroke);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(80% 120% at 0% 0%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 60%),
+    radial-gradient(60% 120% at 100% 0%, color-mix(in srgb, var(--brand-2) 10%, transparent), transparent 60%),
+    var(--surface);
+}
+/* ========== FIX Form Termini & Consensi ========== */
+fieldset legend {
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+
+/* --- VISIBILITÀ CHECKBOX & RADIO FIX LUMA --- */
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--stroke);
+  border-radius: 4px;
+  background: var(--paper);
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+
+/* hover e focus */
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+  border-color: var(--brand);
+}
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* stato selezionato */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+/* segno di spunta */
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  font-size: 13px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* per radio button (cerchio interno) */
+input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* per schermi chiari */
+@media (prefers-color-scheme: light) {
+  input[type="checkbox"],
+  input[type="radio"] {
+    background: #fff;
+    border-color: #ccc;
+  }
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked {
+    background: var(--brand);
+    border-color: var(--brand);
+  }
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.inline label,
+.terms label {
+  color: var(--ink);
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+}
+
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.terms strong {
+  font-weight: 700;
+}
+
+.terms a {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+.help {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+
+/* small adjustment for dark mode readability */
+@media (prefers-color-scheme: dark){
+  input, select {
+    background: color-mix(in srgb, var(--paper) 90%, #000);
+    border-color: color-mix(in srgb, var(--stroke) 90%, #000);
+  }
+}

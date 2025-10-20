@@ -1,142 +1,90 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Luma — Termini & Condizioni</title>
-<meta name="description" content="Termini e Condizioni generali di contratto per l’acquisto e la fruizione dei corsi online Luma S.R.L.S." />
-<style>
-  :root{
-    --bg: #0b0d12;
-    --paper: #0f131a;
-    --ink: #e9edf5;
-    --muted:#a4aec3;
-    --brand:#7c5cff;   /* viola Luma */
-    --accent:#27e1a1;  /* verde acqua */
-    --stroke:#1e2432;
-    --radius:16px;
-    --shadow: 0 20px 60px rgba(0,0,0,.35);
-    color-scheme: dark;
-  }
-  @media (prefers-color-scheme: light){
-    :root{
-      --bg:#f6f7fb; --paper:#ffffff; --ink:#0c0f16; --muted:#5a6376; --stroke:#e6e9f2;
-      --shadow: 0 22px 50px rgba(18,22,40,.08);
-      color-scheme: light;
-    }
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    background:
-      radial-gradient(80% 60% at 85% -10%, color-mix(in srgb, var(--brand) 16%, transparent), transparent 60%),
-      radial-gradient(60% 50% at 0% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%),
-      var(--bg);
-    color:var(--ink);
-    font: 16px/1.75 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    letter-spacing:.2px;
-  }
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:920px;margin-inline:auto;padding:24px clamp(16px,4vw,28px)}
-  /* progress bar */
-  .progress{position:fixed;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--brand),var(--accent));transform:scaleX(0);transform-origin:left;z-index:100}
-  /* header */
-  .site{
-    position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
-    background: color-mix(in srgb, var(--bg) 78%, transparent);
-    border-bottom:1px solid var(--stroke);
-  }
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
-  .brand{display:flex;align-items:center;gap:.7rem;font-weight:900}
-  .logo{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:#fff;background:
-        radial-gradient(120% 120% at 20% 20%, var(--brand), #5b3cff 45%, #241a70 100%); box-shadow:var(--shadow)}
-  .badge{color:var(--muted);border:1px solid var(--stroke);border-radius:999px;padding:.35rem .65rem;font-size:.85rem}
-  .btn{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--stroke);border-radius:12px;padding:.7rem 1rem}
-  .btn.primary{background:linear-gradient(90deg,var(--brand),color-mix(in srgb,var(--brand) 60%,var(--accent)));color:#0b0f15;border:none}
-  /* hero */
-  .hero{
-    margin-top:10px;border:1px solid var(--stroke);border-radius:var(--radius);
-    background:
-      radial-gradient(80% 120% at 0% 0%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 60%),
-      radial-gradient(60% 120% at 100% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%),
-      var(--paper);
-    box-shadow:var(--shadow);
-    padding:26px;
-  }
-  .hero h1{margin:0 0 6px;font-size:clamp(24px,3.2vw,40px);line-height:1.1}
-  .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
-  .chip{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--stroke);border-radius:999px;padding:.35rem .65rem}
-  /* content */
-  article{margin-top:16px}
-  section{padding:18px;border-top:1px solid var(--stroke);background:var(--paper)}
-  section:first-of-type{border-top:none;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
-  section:last-of-type{border-bottom-left-radius:var(--radius);border-bottom-right-radius:var(--radius)}
-  h2{margin:.2rem 0 0;font-size:1.25rem;line-height:1.2}
-  p{margin:.6rem 0}
-  .lead{color:var(--muted)}
-  .note{background: color-mix(in srgb, var(--brand) 10%, transparent); border:1px solid var(--stroke); border-radius:12px; padding:.8rem 1rem; margin:.7rem 0}
-  .divider{height:1px;background:var(--stroke);margin:16px 0}
-  /* footer mini */
-  .foot{margin-top:16px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}
-  .foot a{text-decoration:underline dotted}
-  /* toc minimal */
-  .toc{
-    position:sticky; bottom:16px; margin:16px 0 0; display:flex; gap:8px; overflow:auto; padding-bottom:2px
-  }
-  .toc a{white-space:nowrap;border:1px solid var(--stroke);border-radius:999px;padding:.45rem .7rem;color:var(--muted)}
-  .toc a.active{background: color-mix(in srgb, var(--brand) 18%, transparent); color:var(--ink); border-color:transparent}
-  /* focus */
-  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:8px}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luma — Termini & Condizioni</title>
+  <meta name="description" content="Termini e Condizioni generali di contratto per l’acquisto e la fruizione dei corsi online Luma S.R.L.S." />
+  <!-- CSS base condiviso da tutto il sito -->
+  <link rel="stylesheet" href="/style.css">
+  <!-- CSS specifico di questa pagina -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="progress" id="progress"></div>
 
-  <header class="site">
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">L</div>
-        <span>Luma</span>
-        <span class="badge">Termini & Condizioni</span>
-      </div>
-      <div>
-        <a class="btn" href="/" title="Torna alla Home">← Home</a>
-        <a class="btn primary" href="#contatti" title="Contattaci">Contatti</a>
+  <!-- Barra di lettura -->
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header aria-label="Barra di navigazione">
+    <div class="container nav">
+      <a class="brand" href="/">
+        <img src="logo.jpeg" alt="Logo di Luma" class="logo" />
+        <span aria-label="Luma, home">Luma</span>
+        <span class="chip" title="Formazione verificata">✔︎ Certificata</span>
+      </a>
+
+      <nav aria-label="Primaria">
+        <ul>
+          <li><a href="index.html">Corsi</a></li>
+          <li><a href="/chi-siamo">Chi siamo</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Cambia tema" title="Tema chiaro/scuro">🌓</button>
+        <button id="openCart" class="icon-btn" aria-label="Apri carrello" title="Carrello">🛒</button>
+        <button class="menu-toggle icon-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri menù">☰</button>
       </div>
     </div>
   </header>
+  <!-- DRAWER CARRELLO (già stilato in style.css) -->
+  <aside id="cart" class="cart" aria-label="Carrello" aria-hidden="true">
+    <div class="cart-head">
+      <strong>Carrello</strong>
+      <button class="icon-btn" id="closeCart" aria-label="Chiudi carrello">✕</button>
+    </div>
+    <div class="cart-list">
+      <div class="empty">Il carrello è vuoto</div>
+    </div>
+    <div class="cart-foot">
+      <div class="row"><span>Totale</span><strong>€ 0,00</strong></div>
+      <button class="btn">Checkout</button>
+    </div>
+  </aside>
 
-  <main class="wrap">
+  <!-- MAIN -->
+  <main class="container">
     <!-- HERO -->
-    <section class="hero" aria-labelledby="titolo">
-      <h1 id="titolo">Termini e Condizioni Generali di Contratto — Corsi Online</h1>
-      <p class="meta">
-        <span>Versione 1.0</span> •
-        <span>Ultimo aggiornamento: <time datetime="2025-10-20">20 ottobre 2025</time></span> •
-        <span class="chip">Chiaro & leggibile</span>
-        <span class="chip">GDPR ready</span>
-      </p>
-      <p class="lead">Questa pagina spiega in modo semplice come acquistare e utilizzare i corsi Luma S.R.L.S., i tuoi diritti e le nostre responsabilità.</p>
-      <div class="toc" aria-label="Indice rapido">
-        <a href="#art1" class="toc-link active">Premessa</a>
-        <a href="#art2" class="toc-link">Oggetto</a>
-        <a href="#art3" class="toc-link">Obblighi</a>
-        <a href="#art4" class="toc-link">Registrazione</a>
-        <a href="#art5" class="toc-link">Prezzi & Pagamenti</a>
-        <a href="#art6" class="toc-link">Durata & Recesso</a>
-        <a href="#art7" class="toc-link">Responsabilità</a>
-        <a href="#art8" class="toc-link">Dati personali</a>
-        <a href="#art9" class="toc-link">Copyright</a>
-        <a href="#art10" class="toc-link">Legge & Foro</a>
-        <a href="#art11" class="toc-link">Risoluzione</a>
+    <section class="hero hero-card" aria-labelledby="titolo">
+      <div>
+        <h1 id="titolo" class="headline">Termini e Condizioni Generali di Contratto — Corsi Online</h1>
+        <p class="sub">
+          Versione 1.0 • Ultimo aggiornamento:
+          <time datetime="2025-10-20">20 ottobre 2025</time> •
+          <span class="chip">Chiaro & leggibile</span>
+          <span class="chip">GDPR ready</span>
+        </p>
+
+        <div class="toc" aria-label="Indice rapido">
+          <a href="#art1" class="toc-link active">Premessa</a>
+          <a href="#art2" class="toc-link">Oggetto</a>
+          <a href="#art3" class="toc-link">Obblighi</a>
+          <a href="#art4" class="toc-link">Registrazione</a>
+          <a href="#art5" class="toc-link">Prezzi & Pagamenti</a>
+          <a href="#art6" class="toc-link">Durata & Recesso</a>
+          <a href="#art7" class="toc-link">Responsabilità</a>
+          <a href="#art8" class="toc-link">Dati personali</a>
+          <a href="#art9" class="toc-link">Copyright</a>
+          <a href="#art10" class="toc-link">Legge & Foro</a>
+          <a href="#art11" class="toc-link">Risoluzione</a>
+        </div>
       </div>
     </section>
 
-    <!-- CONTENUTO PULITO, SENZA DOPPI ELENCHI -->
-    <article>
-
+    <!-- CONTENUTO -->
+    <article class="paper">
       <section id="art1" aria-labelledby="h1">
         <h2 id="h1">Art. 1 — Premessa</h2>
         <p><b>Luma S.R.L.S.</b> (di seguito “Società”) è una società di formazione digitale con sede in <i>Fondamenta Rimpeto Mocenigo, 2068 — Venezia</i>, P.IVA <b>12345670987</b>. Attraverso la piattaforma <b>marketingluma.com</b> realizziamo e distribuiamo corsi digitali, percorsi, masterclass, webinar e materiali multimediali.</p>
@@ -144,11 +92,21 @@
         <p>Nel testo: “<b>Utente/Cliente</b>” è la persona che acquista i corsi; “<b>Corso</b>” è l’insieme di lezioni e materiali; “<b>Piattaforma</b>” è il sito attraverso cui acquisti e fruisci; “<b>Servizio</b>” è l’erogazione dei contenuti. Proseguendo all’acquisto o accedendo ai corsi, accetti integralmente queste Condizioni.</p>
       </section>
 
-      <section id="art2" aria-labelledby="h2">
-        <h2 id="h2">Art. 2 — Oggetto del contratto</h2>
-        <p>Il contratto disciplina la vendita e la fruizione dei corsi online di marketing e comunicazione offerti da Luma S.R.L.S., che possono includere video-lezioni, materiali scaricabili e accesso a community online.</p>
-        <p>Le Condizioni integrano la normativa sui contratti a distanza (D.Lgs. 206/2005 – “Codice del Consumo”) e la normativa sul commercio elettronico. Il contratto si considera concluso alla <b>ricezione del pagamento</b> e alla <b>successiva attivazione</b> del Servizio.</p>
-      </section>
+<section id="art2" aria-labelledby="h2">
+  <h2 id="h2">Art. 2 — Oggetto del contratto</h2>
+  <p>Il presente contratto disciplina la vendita e la fruizione dei corsi online in materia di marketing, comunicazione e crescita professionale offerti da <b>Luma S.R.L.S.</b>, che possono includere lezioni video, materiali didattici scaricabili e accesso a community online.</p>
+
+  <p>Le presenti Condizioni integrano la normativa sui contratti a distanza (<b>D.Lgs. 206/2005</b> – Codice del Consumo, ove applicabile) e quella sul commercio elettronico (<b>D.Lgs. 70/2003</b> – servizi della società dell’informazione).</p>
+
+  <p><b>Conclusione del contratto.</b> Il contratto tra Luma S.R.L.S. e l’Utente si intende concluso alla <b>ricezione del pagamento</b> e alla <b>successiva attivazione</b> del Servizio.</p>
+
+  <p><b>Lingua del contratto.</b> Il contratto e le comunicazioni con il Cliente sono in lingua <b>italiana</b>, salvo diverso accordo scritto tra le parti.</p>
+
+  <p><b>Conferma d’ordine.</b> Dopo il pagamento, l’Utente riceve e-mail di conferma contenente numero d’ordine, descrizione del servizio acquistato, dati del fornitore e condizioni contrattuali applicabili.</p>
+
+  <p><b>Archiviazione.</b> Il contratto viene archiviato in formato elettronico sui sistemi della Società, accessibile solo a personale autorizzato. L’Utente può richiederne copia scrivendo a <a href="mailto:hello@marketingluma.com">hello@marketingluma.com</a>.</p>
+</section>
+
 
       <section id="art3" aria-labelledby="h3">
         <h2 id="h3">Art. 3 — Obblighi e responsabilità delle Parti</h2>
@@ -163,90 +121,178 @@
         <div class="note">Suggerimento: scegli una password robusta e disconnettiti al termine di ogni sessione.</div>
       </section>
 
-      <section id="art5" aria-labelledby="h5">
-        <h2 id="h5">Art. 5 — Prezzi e modalità di pagamento</h2>
-        <p>I prezzi dei corsi sono indicati sulla Piattaforma e, salvo diversa indicazione, includono l’IVA. Accettiamo pagamenti con carta di credito/debito, bonifico e PayPal (se disponibile). L’accesso al corso viene attivato dopo la <b>conferma del pagamento</b>.</p>
-        <p>In caso di mancato pagamento o storno, l’accesso può essere sospeso fino alla regolarizzazione. La valuta mostrata dipende dal Paese associato all’account (se loggato) o dal Paese di navigazione (se non loggato); non offriamo la visualizzazione dei prezzi in valute alternative.</p>
-      </section>
+<section id="art5" aria-labelledby="h5">
+  <h2 id="h5">Art. 5 — Prezzi e modalità di pagamento</h2>
+  <p>I prezzi dei corsi sono indicati sulla Piattaforma e, salvo diversa indicazione, si intendono <b>IVA inclusa</b>.</p>
+  <p>Metodi di pagamento accettati: <b>carta di credito/debito</b>, <b>bonifico bancario</b>, <b>PayPal</b> (ove disponibile). L’accesso al corso viene attivato dopo la <b>conferma del pagamento</b>.</p>
+  <p>In caso di <b>mancato pagamento</b> o <b>storno</b>, la Società può sospendere l’accesso fino alla regolarizzazione.</p>
+  <p><b>Valuta dei prezzi.</b> Se hai effettuato l’accesso, la valuta visualizzata è quella del Paese indicato alla creazione dell’account; se navighi senza accesso, la valuta è quella del Paese da cui navighi. Non è prevista la visualizzazione in valute alternative.</p>
+</section>
 
-      <section id="art6" aria-labelledby="h6">
-        <h2 id="h6">Art. 6 — Durata e diritto di recesso</h2>
-        <p>Salvo diversa indicazione nella scheda corso, l’accesso ai materiali è garantito per <b>almeno 12 mesi</b> dalla data di acquisto. L’accesso è personale e non cedibile; in caso di uso improprio la Società può sospendere l’account.</p>
-        <p>Il <b>Consumatore</b> ha diritto di recesso entro <b>14 giorni</b> dall’acquisto (artt. 52 ss. D.Lgs. 206/2005). Tuttavia, ai sensi dell’art. 59, lett. o) del Codice del Consumo, se i contenuti digitali non su supporto materiale iniziano ad essere forniti con <b>consenso espresso</b> e accettazione della <b>perdita del recesso</b>, il diritto non si applica.</p>
-        <p>Se il servizio è acquistato e utilizzato da un <b>Professionista</b> (Partita IVA o finalità imprenditoriali/professionali), le tutele del Consumatore non si applicano; il recesso non è previsto salvo diverso accordo scritto.</p>
-      </section>
+
+<section id="art6" aria-labelledby="h6">
+  <h2 id="h6">Art. 6 — Durata e diritto di recesso</h2>
+
+  <p><b>6.1.</b> Salvo diversa indicazione nella scheda del corso, l’accesso ai materiali formativi è garantito per un periodo minimo di <b>12 mesi</b> dalla data di acquisto. Eventuali proroghe o accessi illimitati sono specificati nella scheda del corso.</p>
+
+  <p><b>6.2.</b> L’accesso ai contenuti è <b>personale e non cedibile</b>. La Società si riserva il diritto di sospendere l’account in caso di uso improprio.</p>
+
+  <p><b>6.3. (Consumatore)</b> L’Utente consumatore ha diritto di recedere entro <b>14 giorni</b> dalla data di acquisto, ai sensi degli artt. 52 ss. del D.Lgs. 206/2005. Per esercitare il recesso è sufficiente inviare comunicazione a <a href="mailto:hello@marketingluma.com">hello@marketingluma.com</a>. Il rimborso sarà effettuato entro 14 giorni dalla ricezione della richiesta, con il medesimo mezzo di pagamento salvo diverso accordo.</p>
+
+  <p><b>6.4. (Eccezione contenuti digitali)</b> Ai sensi dell’art. 59, lett. <i>o)</i> del Codice del Consumo, il diritto di recesso è <b>escluso</b> per i contenuti digitali non forniti su supporto materiale <u>una volta iniziata l’esecuzione</u> con <b>consenso espresso</b> dell’Utente e con la sua <b>accettazione della perdita del diritto di recesso</b>.</p>
+
+  <p><b>6.5.</b> L’Utente prende atto che l’<b>accesso anche parziale</b> ai contenuti durante i 14 giorni, se richiesto/consentito dall’Utente, comporta l’operatività dell’eccezione di cui al punto 6.4.</p>
+
+  <p><b>6.6. (Professionista)</b> Se il Servizio è acquistato da un soggetto che agisce nell’esercizio della propria attività imprenditoriale, commerciale, artigianale o professionale (o con <b>partita IVA</b>), le tutele del Consumatore non si applicano; <b>non è riconosciuto</b> alcun diritto di recesso salvo diverso accordo scritto tra le parti.</p>
+
+  <p><b>6.7. (Definizione)</b> Ai fini delle presenti Condizioni, è “<b>Utente Professionista</b>” chi acquista i Servizi indicando una partita IVA o con finalità strettamente connesse alla propria attività economica o professionale.</p>
+</section>
+
 
       <section id="art7" aria-labelledby="h7">
         <h2 id="h7">Art. 7 — Limitazioni di responsabilità</h2>
         <p>I corsi hanno finalità formative: non garantiamo risultati economici o avanzamenti professionali specifici. L’Utente rimane responsabile delle proprie decisioni e azioni; la Società non risponde di danni diretti o indiretti derivanti da uso improprio dei materiali.</p>
       </section>
 
-      <section id="art8" aria-labelledby="h8">
-        <h2 id="h8">Art. 8 — Trattamento dei dati personali (GDPR)</h2>
-        <p>I dati sono trattati nel rispetto del <b>Reg. (UE) 2016/679</b> (“GDPR”) e della normativa italiana applicabile. Trovi finalità, basi giuridiche, tempi di conservazione e diritti nell’<a href="#" rel="nofollow">Informativa Privacy</a>. Usiamo i dati per erogare i corsi, gestire adempimenti amministrativi e inviarti, quando consentito, comunicazioni su prodotti/servizi analoghi (sempre con possibilità di opt-out).</p>
-        <p class="lead">Gestisci preferenze e cookie: <a href="#" rel="nofollow">Cookie Policy</a> • <a href="#" rel="nofollow">Impostazioni cookie</a></p>
-      </section>
+<section id="art8" aria-labelledby="h8">
+  <h2 id="h8">Art. 8 — Trattamento dei dati personali (GDPR)</h2>
+  <p><b>Titolare del trattamento:</b> Luma S.R.L.S., Fondamenta Rimpeto Mocenigo, 2068 — 30100 Venezia; <a href="mailto:hello@marketingluma.com">hello@marketingluma.com</a>.</p>
+  <p>I dati sono trattati nel rispetto del <b>Reg. (UE) 2016/679</b> (“GDPR”) e della normativa italiana applicabile.</p>
+  <p><b>Basi giuridiche e finalità:</b> esecuzione del contratto (erogazione dei corsi); adempimenti di legge (amministrativo-contabile/fiscale); legittimo interesse (sicurezza della Piattaforma e prevenzione abusi); consenso ove richiesto (newsletter/marketing). L’Utente può revocare in ogni momento i consensi prestati.</p>
+  <p><b>Diritti dell’interessato:</b> accesso, rettifica, cancellazione, limitazione, portabilità, opposizione; reclamo al Garante per la Protezione dei Dati Personali. Dettagli completi nell’<a href="/privacy" rel="nofollow">Informativa Privacy</a>. Gestione cookie: <a href="/cookie" rel="nofollow">Cookie Policy</a> / “Impostazioni cookie”.</p>
+</section>
+
 
       <section id="art9" aria-labelledby="h9">
         <h2 id="h9">Art. 9 — Proprietà intellettuale e diritto d’autore</h2>
         <p>Tutti i materiali (testi, video, grafiche, slide, loghi e documenti) sono di proprietà esclusiva della Società e protetti dalle norme sul diritto d’autore. L’Utente può utilizzarli solo per fini personali e non commerciali. Qualsiasi riproduzione o diffusione non autorizzata comporta la risoluzione del contratto e la richiesta di risarcimento danni.</p>
       </section>
 
-      <section id="art10" aria-labelledby="h10">
-        <h2 id="h10">Art. 10 — Legge applicabile e foro competente</h2>
-        <p>Le Condizioni e i rapporti tra Luma S.R.L.S. e l’Utente sono regolati dalla <b>legge italiana</b>. Per le controversie con il <b>Consumatore</b> è competente il foro di residenza o domicilio del Consumatore (art. 66-bis Codice del Consumo). Per il <b>Professionista</b>, salvo patti diversi, è competente il Foro di Venezia.</p>
-      </section>
+<section id="art10" aria-labelledby="h10">
+  <h2 id="h10">Art. 10 — Legge applicabile e foro competente</h2>
+  <p>Le presenti Condizioni e i rapporti tra Luma S.R.L.S. e l’Utente sono regolati dalla <b>legge italiana</b>.</p>
+  <p><b>Consumatore:</b> foro esclusivo di residenza o domicilio del Consumatore (art. 66-bis Codice del Consumo).</p>
+  <p><b>Professionista:</b> salvo patti diversi, foro competente <b>Venezia</b>.</p>
+</section>
+
 
       <section id="art11" aria-labelledby="h11">
         <h2 id="h11">Art. 11 — Clausola risolutiva e sospensione</h2>
         <p>La Società può risolvere il contratto e/o sospendere l’accesso in caso di uso illecito o condivisione dei contenuti, mancato pagamento, violazione del copyright o delle regole della community. In tali casi, l’accesso può essere sospeso immediatamente, trattenendo le somme già corrisposte, salvo maggior danno.</p>
       </section>
 
-      <div class="divider"></div>
+      <!-- Sezione extra richiesta: Ricevuta (fuori TOC per non alterare la struttura) -->
 
       <section aria-labelledby="contatti">
         <h2 id="contatti">Contatti</h2>
         <p>©️ <span id="year"></span> Luma S.R.L.S. • P.IVA 12345670987 — Sede: Fondamenta Rimpeto Mocenigo, 2068 — Venezia</p>
         <p><a href="mailto:hello@marketingluma.com">hello@marketingluma.com</a> • <a href="https://marketingluma.com" target="_blank" rel="noopener">marketingluma.com</a></p>
       </section>
-
     </article>
 
-    <div class="foot">
-      <span>Pagina chiara? <a href="#contatti">Scrivici</a> se vuoi suggerire miglioramenti.</span>
-      <span><a href="#">Privacy</a> · <a href="#">Cookie</a> · <a href="#">Termini</a></span>
+<footer>
+  <div class="container foot-grid">
+    <div class="foot-col">
+      <img src="logo.jpeg" alt="Logo di Luma" class="logo">
+      <p class="muted">Formazione concreta per chi vuole crescere nel Digital Marketing e nella Comunicazione.</p>
     </div>
+    <div class="foot-col">
+      <h4>Corsi</h4>
+      <a href="#corsi">SEO</a>
+      <a href="#corsi">Social Ads</a>
+      <a href="#corsi">Brand</a>
+      <a href="#corsi">Analytics</a>
+    </div>
+    <div class="foot-col">
+      <h4>Aziende</h4>
+      <a href="#">Formazione team</a>
+      <a href="#">Workshop</a>
+      <a href="#">Consulenza</a>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="termini.html">Termini</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+
+  <div class="container legal-info">
+    <p>
+      <strong>Luma S.R.L.S.</strong> – Sede legale: Fondamenta Rimpeto Mocenigo 2068, Venezia<br>
+      Contatti: <a href="mailto:marketing@luma.com">marketing@luma.com</a> – Tel: 041 8725435<br>
+      P.IVA: 12345670987 – Iscrizione REA: VE-4398127 – Foro competente: Venezia
+    </p>
+  </div>
+
+  <div class="container credits">
+    <span>©️ <span id="year"></span> Luma</span>
+    <span>Made with ♥️</span>
+  </div>
+</footer>
   </main>
 
-<script>
-  // anno
-  document.getElementById('year').textContent = new Date().getFullYear();
+  <button id="toTop" class="btn ghost" aria-label="Torna su">↑</button>
 
-  // progress bar di lettura
-  const prog = document.getElementById('progress');
-  const onScroll = () => {
-    const doc = document.documentElement;
-    const h = doc.scrollHeight - doc.clientHeight;
-    const p = h > 0 ? (doc.scrollTop / h) : 0;
-    prog.style.transform = `scaleX(${p})`;
-  };
-  document.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  <script>
+    // Anno
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  // evidenzia sezione attiva nel TOC
-  const links = [...document.querySelectorAll('.toc-link')];
-  const secs  = [...document.querySelectorAll('article section[id]')];
-  const byId  = id => links.find(a => a.getAttribute('href') === `#${id}`);
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        links.forEach(a=>a.classList.remove('active'));
-        const a = byId(e.target.id);
-        if(a) a.classList.add('active');
-      }
+    // Progress bar di lettura
+    const prog = document.getElementById('progress');
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const h = doc.scrollHeight - doc.clientHeight;
+      const p = h > 0 ? (doc.scrollTop / h) : 0;
+      prog.style.transform = `scaleX(${p})`;
+      document.getElementById('toTop').classList.toggle('show', doc.scrollTop > 600);
+    };
+    document.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    // TOC sezione attiva
+    const links = [...document.querySelectorAll('.toc-link')];
+    const secs  = [...document.querySelectorAll('article section[id]')];
+    const byId  = id => links.find(a => a.getAttribute('href') === `#${id}`);
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(a=>a.classList.remove('active'));
+          const a = byId(e.target.id);
+          if(a) a.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-30% 0px -60% 0px', threshold:.01});
+    secs.forEach(s=>io.observe(s));
+
+    // Toggle tema (usa data-theme che /style.css già supporta)
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn?.addEventListener('click', ()=>{
+      const root = document.documentElement;
+      const current = root.getAttribute('data-theme');
+      root.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
     });
-  }, {rootMargin:'-30% 0px -60% 0px', threshold:.01});
-  secs.forEach(s=>io.observe(s));
-</script>
+
+    // Menu mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const mobile  = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', ()=>{
+      const open = mobile.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      mobile.setAttribute('aria-hidden', String(!open));
+    });
+
+    // Carrello
+    const cart = document.getElementById('cart');
+    document.getElementById('openCart')?.addEventListener('click', ()=>{
+      cart.classList.add('open'); cart.setAttribute('aria-hidden', 'false');
+    });
+    document.getElementById('closeCart')?.addEventListener('click', ()=>{
+      cart.classList.remove('open'); cart.setAttribute('aria-hidden', 'true');
+    });
+
+    // Back to top
+    document.getElementById('toTop')?.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
 </body>
 </html>
