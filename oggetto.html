@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Luma — Checkout</title>
+<meta name="description" content="Pagina di acquisto Luma: completa i dati, accetta i termini e procedi al pagamento." />
+<style>
+  :root{
+    --bg: #0b0d12;
+    --paper: #0f131a;
+    --ink: #e9edf5;
+    --muted:#a4aec3;
+    --brand:#7c5cff;   /* viola Luma */
+    --accent:#27e1a1;  /* verde acqua */
+    --stroke:#1e2432;
+    --radius:16px;
+    --radius-sm:12px;
+    --shadow: 0 20px 60px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f6f7fb; --paper:#ffffff; --ink:#0c0f16; --muted:#5a6376; --stroke:#e6e9f2;
+      --shadow: 0 22px 50px rgba(18,22,40,.08);
+      color-scheme: light;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:
+      radial-gradient(80% 60% at 85% -10%, color-mix(in srgb, var(--brand) 16%, transparent), transparent 60%),
+      radial-gradient(60% 50% at 0% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font: 16px/1.75 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    letter-spacing:.2px;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin-inline:auto;padding:24px clamp(16px,4vw,28px)}
+  /* header */
+  .site{
+    position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom:1px solid var(--stroke);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+  .brand{display:flex;align-items:center;gap:.7rem;font-weight:900}
+  .logo{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:#fff;background:
+        radial-gradient(120% 120% at 20% 20%, var(--brand), #5b3cff 45%, #241a70 100%); box-shadow:var(--shadow)}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--stroke);border-radius:12px;padding:.7rem 1rem}
+  .btn.primary{background:linear-gradient(90deg,var(--brand),color-mix(in srgb,var(--brand) 60%,var(--accent)));color:#0b0f15;border:none}
+  .btn.block{width:100%; justify-content:center; font-weight:800}
+  .btn:disabled{opacity:.6; cursor:not-allowed}
+  /* layout */
+  .grid{
+    display:grid; grid-template-columns: 1.1fr .9fr; gap:20px; align-items:start; margin-top:14px;
+  }
+  @media (max-width: 960px){ .grid{grid-template-columns:1fr} }
+  .card{
+    background:var(--paper); border:1px solid var(--stroke); border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+  .card h2{margin:0; font-size:1.25rem}
+  .card-head{padding:18px; border-bottom:1px solid var(--stroke); display:flex; align-items:center; justify-content:space-between}
+  .card-body{padding:16px}
+  .muted{color:var(--muted)}
+  /* stepper */
+  .stepper{display:flex; gap:10px; flex-wrap:wrap}
+  .chip{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--stroke);border-radius:999px;padding:.35rem .65rem}
+  /* order summary */
+  .item{display:grid; grid-template-columns: 64px 1fr auto; gap:12px; align-items:center; padding:10px 0; border-bottom:1px solid var(--stroke)}
+  .item:last-child{border-bottom:none}
+  .thumb{width:64px; aspect-ratio:1; border-radius:12px; background:
+    linear-gradient(120deg, color-mix(in srgb, var(--brand) 20%, transparent), transparent),
+    linear-gradient(180deg, #0001, transparent);}
+  .price{font-weight:800}
+  .row{display:flex; justify-content:space-between; align-items:center; gap:10px}
+  .total{font-size:1.15rem}
+  .code{display:flex; gap:8px}
+  .code input{flex:1; min-width:0}
+  /* forms */
+  form{display:grid; gap:16px}
+  fieldset{border:1px solid var(--stroke); border-radius:var(--radius-sm); padding:14px}
+  legend{padding:0 6px; color:var(--muted)}
+  .fields{display:grid; grid-template-columns: repeat(2, 1fr); gap:10px}
+  @media (max-width: 640px){ .fields{grid-template-columns:1fr} }
+  label{font-size:.95rem; color:var(--muted); display:block; margin:0 0 4px}
+  input, select{
+    width:100%; padding:.8rem .9rem; border-radius:12px; border:1px solid var(--stroke);
+    background:var(--paper); color:var(--ink);
+  }
+  input:invalid[aria-invalid="true"]{outline:2px solid #ff6b6b; outline-offset:2px}
+  .inline{display:flex; align-items:center; gap:.6rem}
+  .terms{display:flex; align-items:flex-start; gap:.6rem; font-size:.95rem}
+  .terms input{margin-top:.3rem}
+  .help{font-size:.9rem; color:var(--muted)}
+  .sep{height:1px;background:var(--stroke); margin:10px 0}
+  /* footer mini */
+  .foot{margin-top:16px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}
+  .foot a{text-decoration:underline dotted}
+  /* focus */
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:8px}
+</style>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">L</div>
+        <span>Luma</span>
+      </div>
+      <div>
+        <a class="btn" href="/" title="Torna alla Home">← Continua a navigare</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- STEP INTRO -->
+    <div class="card">
+      <div class="card-head">
+        <h2>Checkout</h2>
+        <div class="stepper">
+          <span class="chip">1 • Dati</span>
+          <span class="chip">2 • Termini</span>
+          <span class="chip">3 • Pagamento</span>
+          <span class="chip">4 • Conferma</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- COL SX: FORM -->
+      <section class="card" aria-labelledby="dati">
+        <div class="card-head"><h2 id="dati">Dati cliente & fatturazione</h2></div>
+        <div class="card-body">
+          <form id="checkoutForm" novalidate>
+            <fieldset>
+              <legend>Informazioni personali</legend>
+              <div class="fields">
+                <div>
+                  <label for="name">Nome e Cognome</label>
+                  <input id="name" name="name" autocomplete="name" required placeholder="Es. Marta Cazzin" />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required placeholder="tuo@email.it" />
+                </div>
+                <div>
+                  <label for="country">Paese</label>
+                  <select id="country" name="country" required>
+                    <option value="">Seleziona…</option>
+                    <option value="IT">Italia</option>
+                    <option value="SM">San Marino</option>
+                    <option value="VA">Città del Vaticano</option>
+                    <option value="EU">Altro UE</option>
+                    <option value="EX">Extra UE</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="phone">Telefono (opz.)</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+39 3..." />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Indirizzo di fatturazione</legend>
+              <div class="fields">
+                <div>
+                  <label for="address">Indirizzo</label>
+                  <input id="address" name="address" autocomplete="address-line1" required placeholder="Via / Fondamenta…" />
+                </div>
+                <div>
+                  <label for="city">Città</label>
+                  <input id="city" name="city" autocomplete="address-level2" required placeholder="Venezia" />
+                </div>
+                <div>
+                  <label for="zip">CAP</label>
+                  <input id="zip" name="zip" inputmode="numeric" pattern="\\d{4,6}" required placeholder="30100" />
+                  <div class="help">4–6 cifre</div>
+                </div>
+                <div>
+                  <label for="vat">Partita IVA (se professionista)</label>
+                  <input id="vat" name="vat" placeholder="IT12345678901" />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Termini & consensi</legend>
+              <div class="terms">
+                <input id="accept" type="checkbox" required />
+                <label for="accept">
+                  Dichiaro di aver letto e accettato i
+                  <a href="termini.html" target="_blank" rel="noopener">Termini & Condizioni di acquisto</a>
+                  e la <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+                  <br /><span class="help">Senza accettazione, non puoi procedere al pagamento.</span>
+                </label>
+              </div>
+              <div class="inline">
+                <input id="newsletter" type="checkbox" />
+                <label for="newsletter" class="muted">Voglio ricevere risorse gratuite e sconti (facoltativo).</label>
+              </div>
+            </fieldset>
+
+            <!-- PAGAMENTO (bloccato finché non accetta i termini) -->
+            <fieldset id="payBox" aria-disabled="true" disabled>
+              <legend>Pagamento</legend>
+              <div class="fields">
+                <div>
+                  <label for="paymethod">Metodo</label>
+                  <select id="paymethod" required>
+                    <option value="">Scegli…</option>
+                    <option value="card">Carta (Visa/Mastercard)</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="bank">Bonifico</option>
+                  </select>
+                </div>
+                <div data-pay="card">
+                  <label for="ccnum">Numero carta</label>
+                  <input id="ccnum" inputmode="numeric" pattern="\\d{12,19}" placeholder="1234 5678 9012 3456" />
+                </div>
+                <div data-pay="card">
+                  <label for="exp">Scadenza (MM/AA)</label>
+                  <input id="exp" placeholder="08/28" pattern="^(0[1-9]|1[0-2])\\/(\\d{2})$" />
+                </div>
+                <div data-pay="card">
+                  <label for="cvv">CVV</label>
+                  <input id="cvv" inputmode="numeric" pattern="\\d{3,4}" placeholder="123" />
+                </div>
+              </div>
+              <div class="sep"></div>
+              <button id="payBtn" class="btn primary block" disabled>Procedi al pagamento →</button>
+              <div class="help">Demo: nessun addebito reale. Integra il tuo gateway (Stripe/PayPal) lato server.</div>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <!-- COL DX: ORDER SUMMARY -->
+      <aside class="card" aria-labelledby="riepilogo">
+        <div class="card-head"><h2 id="riepilogo">Riepilogo ordine</h2></div>
+        <div class="card-body">
+          <div id="items">
+            <!-- Mock item -->
+            <div class="item" data-id="brand-strategy">
+              <div class="thumb" aria-hidden="true"></div>
+              <div>
+                <strong>Brand Strategy Essentials</strong>
+                <div class="muted">Corso on-demand • 4h • Certificato</div>
+              </div>
+              <div class="price" data-price="89">€89</div>
+            </div>
+          </div>
+
+          <div class="sep"></div>
+
+          <div class="code">
+            <input id="coupon" placeholder="Codice sconto" aria-label="Inserisci codice sconto" />
+            <button class="btn" id="apply">Applica</button>
+          </div>
+
+          <div class="sep"></div>
+
+          <div class="row"><span>Subtotale</span><strong id="sub">€0</strong></div>
+          <div class="row"><span>IVA (22%)</span><strong id="vat">€0</strong></div>
+          <div class="row total"><span>Totale</span><strong id="tot">€0</strong></div>
+
+          <p class="help">Fatturazione automatica. Accesso ai contenuti entro 24h dal pagamento.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="foot">
+      <span>Serve aiuto? <a href="mailto:hello@marketingluma.com">hello@marketingluma.com</a></span>
+      <span><a href="termini.html" target="_blank" rel="noopener">Termini</a> · <a href="privacy.html" target="_blank" rel="noopener">Privacy</a></span>
+    </div>
+  </main>
+
+<script>
+/* ---------- Utils ---------- */
+const € = n => '€' + n.toLocaleString('it-IT', {minimumFractionDigits:0});
+
+/* ---------- Riepilogo (mock) ---------- */
+const items = [...document.querySelectorAll('#items .item')].map(row => {
+  return { id: row.dataset.id, price: Number(row.querySelector('[data-price]').dataset.price) }
+});
+let discount = 0;
+
+function recalc(){
+  const sub = items.reduce((s,i)=> s + i.price, 0);
+  const subDisc = Math.max(0, sub - discount);
+  const vat = Math.round(subDisc * 0.22);
+  const tot = subDisc + vat;
+  document.getElementById('sub').textContent = €(sub);
+  document.getElementById('vat').textContent = €(vat);
+  document.getElementById('tot').textContent = €(tot);
+}
+recalc();
+
+/* Coupon demo */
+document.getElementById('apply').addEventListener('click', ()=>{
+  const code = document.getElementById('coupon').value.trim().toUpperCase();
+  if(!code){ alert('Inserisci un codice.'); return; }
+  if(code === 'LUMA10'){ discount = 10; alert('Sconto di €10 applicato.'); }
+  else if(code === 'LUMA20'){ discount = 20; alert('Sconto di €20 applicato.'); }
+  else { discount = 0; alert('Codice non valido.'); }
+  recalc();
+});
+
+/* ---------- Gate dei Termini ---------- */
+const terms = document.getElementById('accept');
+const payBox = document.getElementById('payBox');
+const payBtn = document.getElementById('payBtn');
+const method = document.getElementById('paymethod');
+
+function setPaymentEnabled(enabled){
+  if(enabled){
+    payBox.removeAttribute('disabled');
+    payBox.setAttribute('aria-disabled','false');
+    payBtn.disabled = false;
+  }else{
+    payBox.setAttribute('disabled','');
+    payBox.setAttribute('aria-disabled','true');
+    payBtn.disabled = true;
+  }
+}
+setPaymentEnabled(false); // inizialmente bloccato
+
+terms.addEventListener('change', ()=> setPaymentEnabled(terms.checked));
+
+/* Mostra/nascondi campi carta */
+function toggleCardFields(){
+  const cardFields = payBox.querySelectorAll('[data-pay="card"] input');
+  const show = method.value === 'card';
+  cardFields.forEach(i=>{
+    i.required = show;
+    i.parentElement.style.display = show ? 'block' : 'none';
+  });
+}
+method.addEventListener('change', toggleCardFields);
+
+/* ---------- Validazione & submit (demo) ---------- */
+const form = document.getElementById('checkoutForm');
+
+function markInvalid(el, invalid){
+  el.setAttribute('aria-invalid', invalid ? 'true' : 'false');
+}
+
+form.addEventListener('submit', (e)=>{
+  e.preventDefault();
+});
+
+payBtn.addEventListener('click', ()=>{
+  // blocco se termini non accettati
+  if(!terms.checked){
+    alert('Devi accettare i Termini & Condizioni per procedere.');
+    return;
+  }
+
+  // validazione campi richiesti
+  let ok = true;
+  form.querySelectorAll('[required]').forEach(el=>{
+    const valid = el.checkValidity();
+    markInvalid(el, !valid);
+    if(!valid) ok = false;
+  });
+  if(!ok){
+    alert('Controlla i campi evidenziati.');
+    return;
+  }
+
+  // validazione semplice carta se selezionata
+  if(method.value === 'card'){
+    const num = document.getElementById('ccnum').value.replace(/\s+/g,'');
+    const exp = document.getElementById('exp').value;
+    const cvv = document.getElementById('cvv').value;
+    if(!(num && /^\d{12,19}$/.test(num) && /^(0[1-9]|1[0-2])\/\d{2}$/.test(exp) && /^\d{3,4}$/.test(cvv))){
+      alert('Dati carta non validi.');
+      return;
+    }
+  }
+
+  // demo: nessun pagamento reale
+  const tot = document.getElementById('tot').textContent;
+  alert('Ordine confermato! Totale: ' + tot + '\nRiceverai un’email con i dettagli di accesso entro 24 ore.');
+});
+
+/* UX: rimuovi segnale errore appena valido */
+form.addEventListener('input', (e)=>{
+  if(e.target.matches('[required]')){
+    markInvalid(e.target, !e.target.checkValidity());
+  }
+});
+</script>
+</body>
+</html>
