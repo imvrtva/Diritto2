@@ -462,11 +462,65 @@ input[type="radio"]:focus-visible {
   line-height: 1.4;
 }
 
+.hero-preview{
+    width:86%;
+    height:70%;
+    border-radius:100px;
+    border:1px solid var(--stroke);
+    box-shadow: var(--shadow);
+    object-fit: cover;
+    object-position: center;
+    background: var(--surface);
+}
 
-/* small adjustment for dark mode readability */
-@media (prefers-color-scheme: dark){
-  input, select {
-    background: color-mix(in srgb, var(--paper) 90%, #000);
-    border-color: color-mix(in srgb, var(--stroke) 90%, #000);
-  }
+/* migliora le card del catalogo dinamico (#courseGrid) */
+#courseGrid .card {
+  background:
+    radial-gradient(80% 120% at 0% 0%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 60%),
+    radial-gradient(60% 120% at 100% 0%, color-mix(in srgb, var(--brand-2) 10%, transparent), transparent 60%),
+    var(--surface);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-sm);
+  border:1px solid var(--stroke);
+}
+
+#courseGrid .card-media{
+  font-size:1.8rem;
+  font-weight:600;
+  color:var(--text);
+  background:linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--brand) 20%, transparent),
+    transparent
+  );
+}
+
+#courseGrid .card-title{
+  font-size:1rem;
+  line-height:1.3;
+  color:var(--text);
+  font-weight:800;
+}
+
+#courseGrid .card-meta{
+  flex-wrap:wrap;
+  row-gap:6px;
+}
+
+#courseGrid .price{
+  color:var(--brand-2);
+  font-weight:800;
+}
+
+#courseGrid .card-footer{
+  flex-wrap:wrap;
+  justify-content:flex-start;
+}
+#courseGrid .card-footer .btn{
+  font-size:.8rem;
+  padding:.6rem .9rem;
+  box-shadow:none;
+}
+#courseGrid .card-footer .btn.ghost{
+  border-radius:999px;
 }

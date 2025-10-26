@@ -12,8 +12,8 @@
     --paper: #0f131a;
     --ink: #e9edf5;
     --muted:#a4aec3;
-    --brand:#7c5cff;   /* viola Luma */
-    --accent:#27e1a1;  /* verde acqua */
+    --brand:#7c5cff;
+    --accent:#27e1a1;
     --stroke:#1e2432;
     --radius:16px;
     --radius-sm:12px;
@@ -42,9 +42,11 @@
   }
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1100px;margin-inline:auto;padding:24px clamp(16px,4vw,28px)}
+
   /* header */
-  .site{
-    position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
+  header[aria-label="Barra di navigazione"]{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(1.2) blur(8px);
     background: color-mix(in srgb, var(--bg) 78%, transparent);
     border-bottom:1px solid var(--stroke);
   }
@@ -56,11 +58,13 @@
   .btn.primary{background:linear-gradient(90deg,var(--brand),color-mix(in srgb,var(--brand) 60%,var(--accent)));color:#0b0f15;border:none}
   .btn.block{width:100%; justify-content:center; font-weight:800}
   .btn:disabled{opacity:.6; cursor:not-allowed}
+
   /* layout */
   .grid{
     display:grid; grid-template-columns: 1.1fr .9fr; gap:20px; align-items:start; margin-top:14px;
   }
   @media (max-width: 960px){ .grid{grid-template-columns:1fr} }
+
   .card{
     background:var(--paper); border:1px solid var(--stroke); border-radius:var(--radius);
     box-shadow:var(--shadow);
@@ -69,20 +73,30 @@
   .card-head{padding:18px; border-bottom:1px solid var(--stroke); display:flex; align-items:center; justify-content:space-between}
   .card-body{padding:16px}
   .muted{color:var(--muted)}
+
   /* stepper */
   .stepper{display:flex; gap:10px; flex-wrap:wrap}
   .chip{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--stroke);border-radius:999px;padding:.35rem .65rem}
+
   /* order summary */
-  .item{display:grid; grid-template-columns: 64px 1fr auto; gap:12px; align-items:center; padding:10px 0; border-bottom:1px solid var(--stroke)}
+  .item{
+    display:grid; grid-template-columns: 64px 1fr auto;
+    gap:12px; align-items:center;
+    padding:10px 0; border-bottom:1px solid var(--stroke)
+  }
   .item:last-child{border-bottom:none}
-  .thumb{width:64px; aspect-ratio:1; border-radius:12px; background:
-    linear-gradient(120deg, color-mix(in srgb, var(--brand) 20%, transparent), transparent),
-    linear-gradient(180deg, #0001, transparent);}
+  .thumb{
+    width:64px; aspect-ratio:1; border-radius:12px;
+    background-size:cover;
+    background-position:center;
+    box-shadow:var(--shadow);
+  }
   .price{font-weight:800}
   .row{display:flex; justify-content:space-between; align-items:center; gap:10px}
   .total{font-size:1.15rem}
   .code{display:flex; gap:8px}
   .code input{flex:1; min-width:0}
+
   /* forms */
   form{display:grid; gap:16px}
   fieldset{border:1px solid var(--stroke); border-radius:var(--radius-sm); padding:14px}
@@ -95,23 +109,24 @@
     background:var(--paper); color:var(--ink);
   }
   input:invalid[aria-invalid="true"]{outline:2px solid #ff6b6b; outline-offset:2px}
-  .inline{display:flex; align-items:center; gap:.6rem}
   .terms{display:flex; align-items:flex-start; gap:.6rem; font-size:.95rem}
   .terms input{margin-top:.3rem}
   .help{font-size:.9rem; color:var(--muted)}
   .sep{height:1px;background:var(--stroke); margin:10px 0}
+
   /* footer mini */
   .foot{margin-top:16px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}
   .foot a{text-decoration:underline dotted}
+
   /* focus */
   :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:8px}
 </style>
 </head>
 <body>
   <!-- HEADER -->
- <header aria-label="Barra di navigazione">
+  <header aria-label="Barra di navigazione">
     <div class="container nav">
-      <a class="brand" href="/">
+      <a class="brand" href="index.html">
         <img src="logo.jpeg" alt="Logo di Luma" class="logo" />
         <span aria-label="Luma, home">Luma</span>
         <span class="chip" title="Formazione verificata">✔︎ Certificata</span>
@@ -120,16 +135,21 @@
       <nav aria-label="Primaria">
         <ul>
           <li><a href="index.html">Corsi</a></li>
-          <li><a href="/chi-siamo">Chi siamo</a></li>
+          <li><a href="chi-siamo.html">Chi siamo</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </nav>
 
       <div class="actions">
-        <button id="themeToggle" class="icon-btn" aria-label="Cambia tema" title="Tema chiaro/scuro">🌓</button>
-        <button id="openCart" class="icon-btn" aria-label="Apri carrello" title="Carrello">🛒</button>
         <button class="menu-toggle icon-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri menù">☰</button>
       </div>
+    </div>
+
+    <!-- barra secondaria sotto header -->
+    <div class="container header-ribbon">
+      <span class="chip">🚀 Impara oggi, applica domani</span>
+      <span class="chip">+10.000 studenti</span>
+      <span class="chip">📄 Certificazione inclusa</span>
     </div>
   </header>
 
@@ -206,29 +226,26 @@
             </fieldset>
 
             <section class="form-section">
-  <h3>Termini &amp; consensi</h3>
+              <h3 style="margin:0 0 .5rem;font-size:1rem;color:var(--ink);font-weight:600;">Termini &amp; consensi</h3>
 
-  <div class="consents">
-    <label class="consent">
-      <input type="checkbox" name="tc" required aria-describedby="tc-desc">
-      <span id="tc-desc">
-        Dichiaro di aver letto e accettato i
-        <a href="termini.html" target="_blank" rel="noopener">Termini &amp; Condizioni</a>
-        di acquisto e la
-        <a href="privacy" target="_blank" rel="noopener">Privacy Policy</a>.
-        Senza accettazione non puoi procedere al pagamento.
-      </span>
-    </label>
+              <div class="terms">
+                <input id="accept" type="checkbox" name="tc" required aria-describedby="tc-desc">
+                <span id="tc-desc">
+                  Dichiaro di aver letto e accettato i
+                  <a href="termini.html" target="_blank" rel="noopener">Termini &amp; Condizioni</a>
+                  di acquisto e la
+                  <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+                  Senza accettazione non puoi procedere al pagamento.
+                </span>
+              </div>
 
-    <label class="consent">
-      <input type="checkbox" name="marketing_optin">
-      <span>Voglio ricevere risorse gratuite e sconti (facoltativo).</span>
-    </label>
-  </div>
-</section>
+              <div class="terms">
+                <input type="checkbox" name="marketing_optin">
+                <span>Desidero ricevere aggiornamenti e risorse gratuite (facoltativo).</span>
+              </div>
+            </section>
 
-
-            <!-- PAGAMENTO (bloccato finché non accetta i termini) -->
+            <!-- PAGAMENTO -->
             <fieldset id="payBox" aria-disabled="true" disabled>
               <legend>Pagamento</legend>
               <div class="fields">
@@ -266,32 +283,22 @@
       <aside class="card" aria-labelledby="riepilogo">
         <div class="card-head"><h2 id="riepilogo">Riepilogo ordine</h2></div>
         <div class="card-body">
-          <div id="items">
-            <!-- Mock item -->
-            <div class="item" data-id="brand-strategy">
-              <div class="thumb" aria-hidden="true"></div>
-              <div>
-                <strong>Brand Strategy Essentials</strong>
-                <div class="muted">Corso on-demand • 4h • Certificato</div>
-              </div>
-              <div class="price" data-price="89">€89</div>
-            </div>
-          </div>
+          <div id="items"><!-- riempiamo via JS --></div>
 
           <div class="sep"></div>
 
           <div class="code">
             <input id="coupon" placeholder="Codice sconto" aria-label="Inserisci codice sconto" />
-            <button class="btn" id="apply">Applica</button>
+            <button class="btn" id="apply" type="button">Applica</button>
           </div>
 
           <div class="sep"></div>
 
-          <div class="row"><span>Subtotale</span><strong id="sub">€0</strong></div>
-          <div class="row"><span>IVA (22%)</span><strong id="vat">€0</strong></div>
-          <div class="row total"><span>Totale</span><strong id="tot">€0</strong></div>
+          <div class="row"><span>Subtotale</span><strong id="sub">€0,00</strong></div>
+<div class="row"><span>IVA (22%)</span><strong id="vat">€0,00</strong></div>
+<div class="row total"><span>Totale</span><strong id="tot">€0,00</strong></div>
 
-          <p class="help">Fatturazione automatica. Accesso ai contenuti entro 24h dal pagamento.</p>
+          <p class="help">Fatturazione immediata. Accesso ai contenuti entro 24h dal pagamento.</p>
         </div>
       </aside>
     </div>
@@ -300,152 +307,284 @@
       <span>Serve aiuto? <a href="mailto:hello@marketingluma.com">hello@marketingluma.com</a></span>
       <span><a href="termini.html" target="_blank" rel="noopener">Termini</a> · <a href="privacy.html" target="_blank" rel="noopener">Privacy</a></span>
     </div>
-    <footer>
-  <div class="container foot-grid">
-    <div class="foot-col">
-      <img src="logo.jpeg" alt="Logo di Luma" class="logo">
-      <p class="muted">Formazione concreta per chi vuole crescere nel Digital Marketing e nella Comunicazione.</p>
-    </div>
-    <div class="foot-col">
-      <h4>Corsi</h4>
-      <a href="#corsi">SEO</a>
-      <a href="#corsi">Social Ads</a>
-      <a href="#corsi">Brand</a>
-      <a href="#corsi">Analytics</a>
-    </div>
-    <div class="foot-col">
-      <h4>Legal</h4>
-      <a href="faq.html">FAQ</a>
-      <a href="termini.html">Termini</a>
-      <a href="#">Privacy</a>
-    </div>
-  </div>
 
-  <div class="container legal-info">
-    <p>
-      <strong>Luma S.R.L.S.</strong> – Sede legale: Fondamenta Rimpeto Mocenigo 2068, Venezia<br>
-      Contatti: <a href="mailto:marketing@luma.com">marketing@luma.com</a> – Tel: 041 8725435<br>
-      P.IVA: 12345670987 – Iscrizione REA: VE-4398127 – Foro competente: Venezia
-    </p>
-  </div>
+  <footer>
+    <div class="container foot-grid">
+      <div class="foot-col">
+        <img src="logo.jpeg" alt="Logo di Luma" class="logo">
+        <p class="muted">Formazione concreta per chi vuole crescere nel Digital Marketing e nella Comunicazione.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Corsi</h4>
+        <a href="#consigliati">Percorsi</a>
+        <a href="#percorsi">Bundle</a>
+        <a href="quiz.html">Trova il tuo corso</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="faq.html">FAQ</a>
+        <a href="termini.html">Termini</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
 
-  <div class="container credits">
-    <span>©️ <span id="year"></span> Luma</span>
-    <span>Made with ♥️</span>
-  </div>
-</footer>
+    <div class="container legal-info">
+      <p>
+        <strong>Luma S.R.L.S.</strong> – Sede legale: Fondamenta Rimpeto Mocenigo 2068, Venezia<br>
+        Contatti: <a href="mailto:marketing@luma.com">marketing@luma.com</a> – Tel: 041 8725435<br>
+        P.IVA: 12345670987 – Iscrizione REA: VE-4398127 – Foro competente: Venezia
+      </p>
+    </div>
+
+    <div class="container credits">
+      <span>©️ <span id="year"></span> Luma</span>
+      <span>Made with ♥️</span>
+    </div>
+  </footer>
   </main>
 
 <script>
-/* ---------- Utils ---------- */
-
-/* ---------- Riepilogo (mock) ---------- */
-const items = [...document.querySelectorAll('#items .item')].map(row => {
-  return { id: row.dataset.id, price: Number(row.querySelector('[data-price]').dataset.price) }
-});
-let discount = 0;
-
-function recalc(){
-  const sub = items.reduce((s,i)=> s + i.price, 0);
-  const subDisc = Math.max(0, sub - discount);
-  const vat = Math.round(subDisc * 0.22);
-  const tot = subDisc + vat;
-}
-recalc();
-
-/* Coupon demo */
-document.getElementById('apply').addEventListener('click', ()=>{
-  const code = document.getElementById('coupon').value.trim().toUpperCase();
-  if(!code){ alert('Inserisci un codice.'); return; }
-  if(code === 'LUMA10'){ discount = 10; alert('Sconto di €10 applicato.'); }
-  else if(code === 'LUMA20'){ discount = 20; alert('Sconto di €20 applicato.'); }
-  else { discount = 0; alert('Codice non valido.'); }
-  recalc();
-});
-
-/* ---------- Gate dei Termini ---------- */
-const terms = document.getElementById('accept');
-const payBox = document.getElementById('payBox');
-const payBtn = document.getElementById('payBtn');
-const method = document.getElementById('paymethod');
-
-function setPaymentEnabled(enabled){
-  if(enabled){
-    payBox.removeAttribute('disabled');
-    payBox.setAttribute('aria-disabled','false');
-    payBtn.disabled = false;
-  }else{
-    payBox.setAttribute('disabled','');
-    payBox.setAttribute('aria-disabled','true');
-    payBtn.disabled = true;
-  }
-}
-setPaymentEnabled(false); // inizialmente bloccato
-
-terms.addEventListener('change', ()=> setPaymentEnabled(terms.checked));
-
-/* Mostra/nascondi campi carta */
-function toggleCardFields(){
-  const cardFields = payBox.querySelectorAll('[data-pay="card"] input');
-  const show = method.value === 'card';
-  cardFields.forEach(i=>{
-    i.required = show;
-    i.parentElement.style.display = show ? 'block' : 'none';
+document.addEventListener("DOMContentLoaded", () => {
+  /* ============================
+     UTILS
+     ============================ */
+  const fmtEuro = new Intl.NumberFormat("it-IT", {
+    style: "currency",
+    currency: "EUR",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
   });
-}
-method.addEventListener('change', toggleCardFields);
 
-/* ---------- Validazione & submit (demo) ---------- */
-const form = document.getElementById('checkoutForm');
+  function parseParams() {
+    const params = new URLSearchParams(window.location.search);
 
-function markInvalid(el, invalid){
-  el.setAttribute('aria-invalid', invalid ? 'true' : 'false');
-}
+    // se non c'è il titolo vuol dire che siamo arrivati senza query
+    if (!params.get("title")) {
+      return null;
+    }
 
-form.addEventListener('submit', (e)=>{
-  e.preventDefault();
-});
-
-payBtn.addEventListener('click', ()=>{
-  // blocco se termini non accettati
-  if(!terms.checked){
-    alert('Devi accettare i Termini & Condizioni per procedere.');
-    return;
+    return {
+      id: params.get("id") || "corso-selezionato",
+      title: params.get("title"),
+      durata: params.get("durata") || "Corso on-demand",
+      prezzo: Number(params.get("prezzo") || 0)
+    };
   }
 
-  // validazione campi richiesti
-  let ok = true;
-  form.querySelectorAll('[required]').forEach(el=>{
-    const valid = el.checkValidity();
-    markInvalid(el, !valid);
-    if(!valid) ok = false;
-  });
-  if(!ok){
-    alert('Controlla i campi evidenziati.');
-    return;
+  /* ============================
+     STATO CARRELLO
+     ============================ */
+  let cartItem = parseParams();
+
+  // fallback se arrivo "a mano" senza querystring
+  if (!cartItem || isNaN(cartItem.prezzo)) {
+    cartItem = {
+      id: "brand",
+      title: "Brand Strategy Essentials",
+      durata: "Corso on-demand • 4h • Certificato",
+      prezzo: 89
+    };
   }
 
-  // validazione semplice carta se selezionata
-  if(method.value === 'card'){
-    const num = document.getElementById('ccnum').value.replace(/\s+/g,'');
-    const exp = document.getElementById('exp').value;
-    const cvv = document.getElementById('cvv').value;
-    if(!(num && /^\d{12,19}$/.test(num) && /^(0[1-9]|1[0-2])\/\d{2}$/.test(exp) && /^\d{3,4}$/.test(cvv))){
-      alert('Dati carta non validi.');
-      return;
+  /* ============================
+     MAPPATURA ID → IMMAGINE
+     ============================ */
+  function getThumbFor(id) {
+    switch (id) {
+      case "ads":
+        return "take1.jpg";
+      case "adsprint":
+        return "take3.jpg";
+      case "launch":
+        return "take4.jpg";
+      case "brand":
+        return "take5.jpg";
+      case "content":
+        return "take6.jpg";
+      default:
+        return "take5.jpg"; // fallback safe
     }
   }
 
-  // demo: nessun pagamento reale
-  const tot = document.getElementById('tot').textContent;
-  alert('Ordine confermato! Totale: ' + tot + '\nRiceverai un’email con i dettagli di accesso entro 24 ore.');
-});
+  /* ============================
+     RENDER RIEPILOGO
+     ============================ */
+  const itemsContainer = document.getElementById("items");
 
-/* UX: rimuovi segnale errore appena valido */
-form.addEventListener('input', (e)=>{
-  if(e.target.matches('[required]')){
-    markInvalid(e.target, !e.target.checkValidity());
+  function renderSummaryItem(item) {
+    const thumbUrl = getThumbFor(item.id);
+
+    itemsContainer.innerHTML = `
+      <div class="item" data-id="${item.id}">
+        <div class="thumb"
+             aria-hidden="true"
+             style="background-image:url('${thumbUrl}');"></div>
+        <div>
+          <strong>${item.title}</strong>
+          <div class="muted">${item.durata}</div>
+        </div>
+        <div class="price" data-price="${item.prezzo}">
+          ${fmtEuro.format(item.prezzo)}
+        </div>
+      </div>
+    `;
   }
+
+  renderSummaryItem(cartItem);
+
+  /* ============================
+     CALCOLO PREZZI (SUB / IVA / TOTALE)
+     ============================ */
+  let discount = 0;
+
+  function recalc() {
+    // subtotale (post-sconto, mai sotto zero)
+    const sub = Math.max(0, Number(cartItem.prezzo) - Number(discount));
+
+    // IVA al 22%
+    const iva = +(sub * 0.22).toFixed(2);
+
+    // totale finale lordo
+    const tot = +(sub + iva).toFixed(2);
+
+    document.getElementById("sub").textContent = fmtEuro.format(sub);
+    document.querySelector('[aria-labelledby="riepilogo"] #vat').textContent = fmtEuro.format(iva);
+    document.getElementById("tot").textContent = fmtEuro.format(tot);
+  }
+
+  recalc();
+
+  /* ============================
+     GESTIONE COUPON
+     ============================ */
+  const applyBtn = document.getElementById("apply");
+  const couponInput = document.getElementById("coupon");
+
+  applyBtn.addEventListener("click", () => {
+    const code = couponInput.value.trim().toUpperCase();
+    if (!code) {
+      alert("Inserisci un codice.");
+      return;
+    }
+
+    if (code === "LUMA10") {
+      discount = 10;
+      alert("Codice valido: €10 di sconto applicati.");
+    } else if (code === "LUMA20") {
+      discount = 20;
+      alert("Codice valido: €20 di sconto applicati.");
+    } else {
+      discount = 0;
+      alert("Codice non valido.");
+    }
+
+    recalc();
+  });
+
+  /* ============================
+     BLOCCO/SBLOCCO PAGAMENTO
+     ============================ */
+  const terms = document.getElementById("accept");
+  const payBox = document.getElementById("payBox");
+  const payBtn = document.getElementById("payBtn");
+  const method = document.getElementById("paymethod");
+  const form = document.getElementById("checkoutForm");
+
+  function setPaymentEnabled(enabled) {
+    if (enabled) {
+      payBox.removeAttribute("disabled");
+      payBox.setAttribute("aria-disabled", "false");
+      payBtn.disabled = false;
+    } else {
+      payBox.setAttribute("disabled", "");
+      payBox.setAttribute("aria-disabled", "true");
+      payBtn.disabled = true;
+    }
+  }
+
+  // di default: bloccato
+  setPaymentEnabled(false);
+
+  terms.addEventListener("change", () => {
+    setPaymentEnabled(terms.checked);
+  });
+
+  // mostra/nascondi i campi carta
+  function toggleCardFields() {
+    const show = method.value === "card";
+    payBox.querySelectorAll('[data-pay="card"]').forEach(wrapper => {
+      wrapper.style.display = show ? "block" : "none";
+      const input = wrapper.querySelector("input");
+      if (input) {
+        input.required = show;
+      }
+    });
+  }
+
+  method.addEventListener("change", toggleCardFields);
+
+  /* ============================
+     VALIDAZIONE E "PAGA"
+     ============================ */
+  function markInvalid(el, invalid) {
+    el.setAttribute("aria-invalid", invalid ? "true" : "false");
+  }
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+  });
+
+  payBtn.addEventListener("click", () => {
+    // Termini accettati?
+    if (!terms.checked) {
+      alert("Devi accettare i Termini & Condizioni per procedere.");
+      return;
+    }
+
+    // Validazione campi required del form
+    let ok = true;
+    form.querySelectorAll("[required]").forEach(el => {
+      const valid = el.checkValidity();
+      markInvalid(el, !valid);
+      if (!valid) ok = false;
+    });
+    if (!ok) {
+      alert("Controlla i campi evidenziati.");
+      return;
+    }
+
+    // Se metodo carta, controlla carta
+    if (method.value === "card") {
+      const num = document.getElementById("ccnum").value.replace(/\s+/g, "");
+      const exp = document.getElementById("exp").value;
+      const cvv = document.getElementById("cvv").value;
+      const cardOk =
+        num &&
+        /^\d{12,19}$/.test(num) &&
+        /^(0[1-9]|1[0-2])\/\d{2}$/.test(exp) &&
+        /^\d{3,4}$/.test(cvv);
+
+      if (!cardOk) {
+        alert("Dati carta non validi.");
+        return;
+      }
+    }
+
+    const totTxt = document.getElementById("tot").textContent;
+    alert(
+      "Ordine confermato!\n" +
+      "Corso: " + cartItem.title + "\n" +
+      "Totale: " + totTxt + "\n\n" +
+      "Riceverai un’email con i dettagli di accesso entro 24 ore."
+    );
+  });
+
+  /* UX: togli errore appena valido in tempo reale */
+  form.addEventListener("input", e => {
+    if (e.target.matches("[required]")) {
+      markInvalid(e.target, !e.target.checkValidity());
+    }
+  });
 });
 </script>
 </body>

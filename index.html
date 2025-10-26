@@ -5,13 +5,285 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Luma — Corsi di Digital Marketing & Comunicazione</title>
   <meta name="description" content="Luma: e-commerce di corsi su Digital Marketing e Comunicazione. Impara SEO, Social, Performance, Brand, Copy e molto altro." />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ===== micro-touch estetici aggiuntivi ===== */
+
+    /* hero layout = due colonne */
+    .hero {
+      position: relative;
+      background:
+        radial-gradient(80% 80% at 20% 0%, color-mix(in srgb, var(--brand) 10%, transparent) 0%, transparent 70%),
+        radial-gradient(70% 70% at 80% 0%, color-mix(in srgb, var(--brand-2) 8%, transparent) 0%, transparent 70%);
+      padding-top:32px;
+      padding-bottom:32px;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:-120px;
+      width:360px;
+      height:360px;
+      translate:-50% 0;
+      background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--brand) 25%, transparent) 0%, transparent 70%);
+      filter:blur(60px);
+      opacity:.25;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:start;
+      gap:2rem;
+    }
+
+    @media(max-width:900px){
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .headline{
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+
+    .sub{
+      color:var(--muted);
+      max-width:55ch;
+      margin-top:14px;
+      font-size:1rem;
+      line-height:1.5;
+    }
+
+    .hero-cta{
+      margin-top:24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .mini-proof{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:20px;
+      font-size:.9rem;
+      color:var(--muted);
+    }
+    .mini-proof .badge{
+      border:1px solid var(--stroke);
+      background:
+        radial-gradient(120% 140% at 10% 10%, color-mix(in srgb, var(--brand) 16%, transparent) 0%, transparent 60%),
+        var(--surface);
+      border-radius:var(--radius-sm);
+      padding:10px 12px;
+      display:grid;
+      gap:2px;
+      box-shadow:var(--shadow);
+      min-width:140px;
+    }
+    .mini-proof .badge strong{
+      color:var(--text);
+      line-height:1.2;
+      font-size:.95rem;
+      font-weight:700;
+    }
+    .mini-proof .badge span{
+      font-size:.8rem;
+      color:var(--muted);
+      line-height:1.3;
+    }
+
+    /* hero right side (immagine preview) */
+    .hero-media{
+      position:relative;
+      border-radius:var(--radius);
+      border:1px solid var(--stroke);
+      background:
+        radial-gradient(55% 80% at 75% 20%, color-mix(in srgb, var(--brand) 18%, transparent), transparent 60%),
+        linear-gradient(180deg, color-mix(in srgb, var(--surface) 85%, transparent), var(--surface));
+      box-shadow: var(--shadow);
+      min-height:260px;
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    .hero-preview{
+      width:100%;
+      max-width:90%;
+      max-height:80%;
+      border-radius:var(--radius);
+      border:1px solid var(--stroke);
+      box-shadow:0 20px 40px rgba(0,0,0,.6);
+      object-fit:cover;
+      object-position:center;
+      background: var(--surface);
+    }
+
+    .floating{
+      position:absolute;
+      right:16px;
+      bottom:16px;
+      background:var(--surface);
+      border:1px solid var(--stroke);
+      border-radius:12px;
+      padding:10px 12px;
+      box-shadow:var(--shadow);
+      font-size:.8rem;
+      line-height:1.4;
+      color:var(--text);
+    }
+    .floating b{
+      color:var(--brand-2);
+    }
+
+    /* seconda riga sotto header (promo ribbon) */
+    .header-ribbon{
+      padding-bottom:12px;
+      color:var(--muted);
+      font-size:.8rem;
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+      align-items:center;
+    }
+    .header-ribbon .chip{
+      font-size:.75rem;
+      padding:.35rem .6rem;
+      border-color:color-mix(in srgb,var(--brand) 40%, var(--stroke));
+      background:color-mix(in srgb,var(--brand) 15%, transparent);
+    }
+
+    /* cards corsi */
+    .courses-featured{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px,100%),1fr));
+      gap:16px;
+    }
+    .course-card{
+      border:1px solid var(--stroke);
+      border-radius:var(--radius-sm);
+      background:
+        radial-gradient(80% 120% at 0% 0%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 60%),
+        radial-gradient(60% 120% at 100% 0%, color-mix(in srgb, var(--brand-2) 10%, transparent), transparent 60%),
+        var(--surface);
+      box-shadow:var(--shadow);
+      display:grid;
+      padding:16px;
+      gap:12px;
+      position:relative;
+    }
+    .course-head{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:8px 12px;
+    }
+    .course-title{
+      margin:0;
+      font-weight:800;
+      color:var(--text);
+      line-height:1.3;
+      font-size:1rem;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:.5rem;
+    }
+    .pill{
+      background:color-mix(in srgb, var(--brand) 16%, transparent);
+      border:1px solid var(--stroke);
+      border-radius:999px;
+      padding:.35rem .6rem;
+      font-size:.7rem;
+      line-height:1.2;
+      font-weight:600;
+      color:var(--text);
+      box-shadow:0 16px 36px rgba(0, 0, 0, 0.067);
+    }
+    .price-big{
+      font-weight:800;
+      font-size:1rem;
+      color:var(--brand-2);
+      text-shadow:0 0 10px color-mix(in srgb, var(--brand-2) 60%, transparent);
+    }
+    .course-desc-short{
+      color:var(--muted);
+      font-size:.9rem;
+      line-height:1.4;
+      margin:0;
+      max-width:60ch;
+    }
+    .course-tags-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+    .tag-soft{
+      font-size:.75rem;
+      line-height:1.2;
+      border-radius:999px;
+      padding:.4rem .6rem;
+      background:color-mix(in srgb, var(--brand-2) 15%, transparent);
+      border:1px solid var(--stroke);
+      color:var(--text);
+    }
+    .course-cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      border-top:1px solid var(--stroke);
+      padding-top:12px;
+    }
+    .meta-inline{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:.8rem;
+      color:var(--muted);
+      line-height:1.3;
+    }
+
+    /* testimonial testo */
+    .quote blockquote{
+      font-size:.95rem;
+      line-height:1.5;
+      color:var(--text);
+    }
+    .quote figcaption{
+      font-size:.8rem;
+    }
+
+    /* bottone torna su pill */
+    #toTop{
+      border-radius:999px;
+      box-shadow:var(--shadow);
+      font-weight:700;
+      width:auto;
+      min-width:44px;
+      height:44px;
+    }
+  </style>
 </head>
-<link rel="stylesheet" href="style.css">
-<body><a></a>
+<body>
+
   <!-- Header -->
   <header aria-label="Barra di navigazione">
     <div class="container nav">
-      <a class="brand" href="/">
+      <a class="brand" href="index.html">
         <img src="logo.jpeg" alt="Logo di Luma" class="logo" />
         <span aria-label="Luma, home">Luma</span>
         <span class="chip" title="Formazione verificata">✔︎ Certificata</span>
@@ -20,152 +292,269 @@
       <nav aria-label="Primaria">
         <ul>
           <li><a href="index.html">Corsi</a></li>
-          <li><a href="/chi-siamo">Chi siamo</a></li>
+          <li><a href="chi-siamo.html">Chi siamo</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </nav>
 
       <div class="actions">
-        <button id="themeToggle" class="icon-btn" aria-label="Cambia tema" title="Tema chiaro/scuro">🌓</button>
-        <button id="openCart" class="icon-btn" aria-label="Apri carrello" title="Carrello">🛒</button>
         <button class="menu-toggle icon-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri menù">☰</button>
       </div>
     </div>
+
+    <!-- barra secondaria sotto header -->
+    <div class="container header-ribbon">
+      <span class="chip">🚀 Impara oggi, applica domani</span>
+      <span class="chip">+10.000 studenti</span>
+      <span class="chip">📄 Certificazione inclusa</span>
+    </div>
   </header>
 
+  <!-- Mobile menu -->
+  <nav id="mobileMenu" class="mobile-menu" aria-label="Menu mobile">
+    <ul>
+      <li><a href="index.html">Corsi</a></li>
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+  </nav>
 
-  <!-- Hero -->
+
+  <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
+
+      <!-- COLONNA SINISTRA -->
       <div>
-        <div class="chip">🚀 Impara oggi, applica domani</div>
-        <h1 class="headline">Diventa protagonista del tuo <span style="background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Digital Marketing</span>.</h1>
-        <p class="sub">Corsi pratici e aggiornati per tutti su SEO, Social Ads, Brand Strategy, Copywriting, Analytics e molto altro. Con progetti reali e certificazione Luma.</p>
+        <h1 class="headline">
+          Diventa protagonista del tuo
+          <span style="background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Digital Marketing</span>.
+        </h1>
+
+        <p class="sub">
+          Corsi pratici e aggiornati su SEO, Social Ads, Brand Strategy, Copywriting, Analytics e molto altro.
+          Con casi reali, template e certificazione Luma spendibile su CV e LinkedIn.
+        </p>
+
         <div class="hero-cta">
-          <a class="btn" href="#corsi">Sfoglia i corsi →</a>
-          <a class="btn ghost" href="#percorsi" aria-label="Vai ai percorsi di studio">Percorsi guidati</a>
+          <a class="btn" href="#consigliati" aria-label="Vai ai corsi consigliati">
+            I più consigliati →
+          </a>
+          <a class="btn ghost" href="quiz.html" aria-label="Vai al test orientamento">
+            Non sai da dove partire?
+          </a>
         </div>
 
-        <div class="toolbar" role="search" aria-label="Cerca corsi">
-          <input id="search" type="search" placeholder="Cerca: SEO, TikTok Ads, Brand..." aria-label="Cerca corsi" />
-          <div class="filters" aria-label="Filtra per categoria">
-            <button class="chip filter is-active" data-filter="tutto">Tutto</button>
-            <button class="chip filter" data-filter="Performance">Performance</button>
-            <button class="chip filter" data-filter="Content">Content</button>
-            <button class="chip filter" data-filter="Brand">Brand</button>
-            <button class="chip filter" data-filter="Analytics">Analytics</button>
+        <div class="mini-proof">
+          <div class="badge">
+            <strong>+10.000</strong>
+            <span>studenti formati</span>
+          </div>
+          <div class="badge">
+            <strong>3–6h</strong>
+            <span>per corso</span>
+          </div>
+          <div class="badge">
+            <strong>100% pratico</strong>
+            <span>no teoria inutile</span>
           </div>
         </div>
       </div>
 
+      <!-- COLONNA DESTRA: IMMAGINE -->
       <div class="hero-media" aria-hidden="true">
-        <div class="demo-chart">Anteprima dashboard campagne</div>
-        <div class="floating">⏱️ <b>3–6h</b> per corso • 📄 Certificato</div>
+        <img
+          src="big.jpg"
+          alt="Anteprima dashboard campagne"
+          class="hero-preview"
+          loading="lazy"
+        />
+        <div class="floating">
+          ⏱️ <b>3–6h</b> per corso<br>📄 Certificato incluso
+        </div>
       </div>
+
     </div>
   </section>
 
-  <section>
-    <div class="container features" aria-label="Punti di forza">
-      <div class="feature">
-        <div class="ico">🎯</div>
-        <strong>Pratico e subito applicabile</strong>
-        <span class="muted">Esempi reali, template e checklist operative.</span>
-      </div>
-      <div class="feature">
-        <div class="ico">📈</div>
-        <strong>Orientato ai risultati</strong>
-        <span class="muted">Impara a pianificare, misurare e ottimizzare.</span>
-      </div>
-      <div class="feature">
-        <div class="ico">🧑‍🏫</div>
-        <strong>Tutor e community</strong>
-        <span class="muted">Supporto continuo e feedback sui progetti.</span>
-      </div>
-      <div class="feature">
-        <div class="ico">🔒</div>
-        <strong>Pagamento sicuro</strong>
-        <span class="muted">Protezione acquisti e fattura immediata.</span>
-      </div>
-    </div>
-  </section>
 
-  <!-- Corsi -->
-  <section id="corsi">
+  <!-- CORSI IN EVIDENZA -->
+  <section id="consigliati">
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>I corsi più scelti</h2>
-          <div class="muted">Aggiornati e orientati al mercato</div>
+          <h2>I nostri corsi</h2>
+          <div class="muted">Fatti per obiettivi diversi</div>
         </div>
-        <a class="btn ghost" href="#corsi">Vedi tutti</a>
       </div>
 
-      <div id="courseGrid" class="grid" aria-live="polite">
-        <!-- Cards generate via JS -->
+      <div class="courses-featured">
+        <!-- Digital Marketing Launch Kit -->
+        <article class="course-card">
+          <div class="course-head">
+            <h3 class="course-title">
+              Digital Marketing Launch Kit
+              <span class="pill">Percorso base (4 moduli)</span>
+            </h3>
+            <div class="price-big">€199</div>
+          </div>
+
+          <p class="course-desc-short">
+            SEO base, social organico, email marketing e analytics. Perfetto se parti da zero
+            o vuoi diventare assumibile velocemente.
+          </p>
+
+          <div class="course-tags-row">
+            <span class="tag-soft">SEO</span>
+            <span class="tag-soft">Social</span>
+            <span class="tag-soft">Email</span>
+            <span class="tag-soft">Analytics</span>
+          </div>
+
+          <div class="course-cta-row">
+            <div class="meta-inline">
+              <span>⏱ ≈5h totali</span>
+              <span>📄 Certificato</span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a class="btn ghost" href="launch.html">Dettagli</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Brand & Content Lab -->
+        <article class="course-card">
+          <div class="course-head">
+            <h3 class="course-title">
+              Brand &amp; Content Lab
+              <span class="pill">Percorso creativo (3 moduli)</span>
+            </h3>
+            <div class="price-big">€249</div>
+          </div>
+
+          <p class="course-desc-short">
+            Tone of voice, storytelling, calendario contenuti e community building.
+            Costruisci un brand riconoscibile e umano.
+          </p>
+
+          <div class="course-tags-row">
+            <span class="tag-soft">Branding</span>
+            <span class="tag-soft">Storytelling</span>
+            <span class="tag-soft">Content strategy</span>
+          </div>
+
+          <div class="course-cta-row">
+            <div class="meta-inline">
+              <span>⏱ ≈4h totali</span>
+              <span>📄 Certificato</span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a class="btn ghost" href="brand.html">Dettagli</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Performance Ads Pro -->
+        <article class="course-card">
+          <div class="course-head">
+            <h3 class="course-title">
+              Performance Ads Pro
+              <span class="pill">Percorso avanzato (5 moduli)</span>
+            </h3>
+            <div class="price-big">€349</div>
+          </div>
+
+          <p class="course-desc-short">
+            Meta Ads, funnel, remarketing, lettura dati e ottimizzazione budget.
+            Tutto orientato al ROI (non “boosta il post”).
+          </p>
+
+          <div class="course-tags-row">
+            <span class="tag-soft">Meta Ads</span>
+            <span class="tag-soft">Funnel</span>
+            <span class="tag-soft">CRO</span>
+            <span class="tag-soft">ROAS</span>
+          </div>
+
+          <div class="course-cta-row">
+            <div class="meta-inline">
+              <span>⏱ ≈6h totali</span>
+              <span>📄 Certificato</span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a class="btn ghost" href="ads.html">Dettagli</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Content System Express -->
+        <article class="course-card">
+          <div class="course-head">
+            <h3 class="course-title">
+              Content System Express
+              <span class="pill">Corso singolo</span>
+            </h3>
+            <div class="price-big">€79</div>
+          </div>
+
+          <p class="course-desc-short">
+            Metodo per creare contenuti settimanali riciclabili su più piattaforme
+            senza burn-out. Ideale se fai tutto da sola/solo.
+          </p>
+
+          <div class="course-tags-row">
+            <span class="tag-soft">Pianificazione</span>
+            <span class="tag-soft">Repurpose</span>
+            <span class="tag-soft">Social</span>
+          </div>
+
+          <div class="course-cta-row">
+            <div class="meta-inline">
+              <span>⏱ ≈2h</span>
+              <span>🔥 Subito pratico</span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a class="btn ghost" href="content.html">Dettagli</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Meta Ads Sprint -->
+        <article class="course-card">
+          <div class="course-head">
+            <h3 class="course-title">
+              Meta Ads Sprint
+              <span class="pill">Corso singolo pratico</span>
+            </h3>
+            <div class="price-big">€99</div>
+          </div>
+
+          <p class="course-desc-short">
+            Imposta una campagna Meta da zero, capisci i KPI importanti e lancia
+            il tuo primo A/B test. Perfetto per budget piccoli.
+          </p>
+
+          <div class="course-tags-row">
+            <span class="tag-soft">Meta Ads</span>
+            <span class="tag-soft">A/B test</span>
+            <span class="tag-soft">Budget piccoli</span>
+          </div>
+
+          <div class="course-cta-row">
+            <div class="meta-inline">
+              <span>⏱ ≈3h</span>
+              <span>💼 Skill spendibile</span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a class="btn ghost" href="adsprint.html">Dettagli</a>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Percorsi -->
-  <section id="percorsi">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Percorsi di apprendimento</h2>
-          <div class="muted">Roadmap guidate per obiettivi chiari</div>
-        </div>
-      </div>
-      <div class="grid">
-        <article class="card" >
-          <div class="card-media">🧭 Growth Starter</div>
-          <div class="card-body">
-            <h3 class="card-title">Growth Starter (4 corsi)</h3>
-            <p class="muted">Le basi solide: SEO, Social organico, Email e Analytics per impostare una strategia completa.</p>
-            <div class="card-tags">
-              <span class="chip">SEO</span><span class="chip">Social</span><span class="chip">Email</span>
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="price">€229</span>
-            <a href="corso.html"><button class="btn add" data-bundle="Growth Starter" >Aggiungi</button></a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media">⚡ Performance Pro</div>
-          <div class="card-body">
-            <h3 class="card-title">Performance Pro (5 corsi)</h3>
-            <p class="muted">Paid Social, Google Ads, CRO e attribuzione: porta risultati misurabili su budget reali.</p>
-            <div class="card-tags">
-              <span class="chip">Ads</span><span class="chip">CRO</span><span class="chip">Attribution</span>
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="price">€349</span>
-            <button class="btn add" data-bundle="Performance Pro">Aggiungi</button>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media">🪄 Brand & Content</div>
-          <div class="card-body">
-            <h3 class="card-title">Brand & Content (3 corsi)</h3>
-            <p class="muted">Brand strategy, storytelling e content system multi-piattaforma.</p>
-            <div class="card-tags">
-              <span class="chip">Brand</span><span class="chip">Story</span><span class="chip">Content</span>
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="price">€269</span>
-            <button class="btn add" data-bundle="Brand & Content">Aggiungi</button>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonianze -->
+  <!-- TESTIMONIANZE -->
   <section id="testimonianze">
     <div class="container">
       <div class="section-head">
@@ -191,12 +580,13 @@
     </div>
   </section>
 
-  <!-- Newsletter -->
+
+  <!-- NEWSLETTER -->
   <section id="newsletter">
     <div class="container newsletter" aria-label="Iscrizione newsletter">
       <div class="chip">📬 Rimani aggiornato</div>
       <h2 style="margin:6px 0 0">Risorse gratuite & sconti esclusivi</h2>
-      <p class="muted" style="margin:0">Iscriviti per ricevere guide, checklist e early access ai nuovi corsi.</p>
+      <p class="muted" style="margin:0">Guide, checklist e early access ai nuovi corsi.</p>
       <form onsubmit="event.preventDefault(); alert('Grazie! Controlla la tua casella email.'); this.reset()">
         <input type="email" required placeholder="La tua email" aria-label="Inserisci la tua email" />
         <button class="btn">Iscrivimi →</button>
@@ -204,44 +594,44 @@
     </div>
   </section>
 
-  <!-- Footer -->
-<footer>
-  <div class="container foot-grid">
-    <div class="foot-col">
-      <img src="logo.jpeg" alt="Logo di Luma" class="logo">
-      <p class="muted">Formazione concreta per chi vuole crescere nel Digital Marketing e nella Comunicazione.</p>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot-grid">
+      <div class="foot-col">
+        <img src="logo.jpeg" alt="Logo di Luma" class="logo">
+        <p class="muted">Formazione concreta per chi vuole crescere nel Digital Marketing e nella Comunicazione.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Corsi</h4>
+        <a href="#consigliati">Percorsi</a>
+        <a href="#percorsi">Bundle</a>
+        <a href="quiz.html">Trova il tuo corso</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="faq.html">FAQ</a>
+        <a href="termini.html">Termini</a>
+        <a href="#">Privacy</a>
+      </div>
     </div>
-    <div class="foot-col">
-      <h4>Corsi</h4>
-      <a href="#corsi">SEO</a>
-      <a href="#corsi">Social Ads</a>
-      <a href="#corsi">Brand</a>
-      <a href="#corsi">Analytics</a>
+
+    <div class="container legal-info">
+      <p>
+        <strong>Luma S.R.L.S.</strong> – Sede legale: Fondamenta Rimpeto Mocenigo 2068, Venezia<br>
+        Contatti: <a href="mailto:marketing@luma.com">marketing@luma.com</a> – Tel: 041 8725435<br>
+        P.IVA: 12345670987 – Iscrizione REA: VE-4398127 – Foro competente: Venezia
+      </p>
     </div>
-    <div class="foot-col">
-      <h4>Legal</h4>
-      <a href="faq.html">FAQ</a>
-      <a href="termini.html">Termini</a>
-      <a href="#">Privacy</a>
+
+    <div class="container credits">
+      <span>©️ <span id="year"></span> Luma</span>
+      <span>Made with ♥️</span>
     </div>
-  </div>
-
-  <div class="container legal-info">
-    <p>
-      <strong>Luma S.R.L.S.</strong> – Sede legale: Fondamenta Rimpeto Mocenigo 2068, Venezia<br>
-      Contatti: <a href="mailto:marketing@luma.com">marketing@luma.com</a> – Tel: 041 8725435<br>
-      P.IVA: 12345670987 – Iscrizione REA: VE-4398127 – Foro competente: Venezia
-    </p>
-  </div>
-
-  <div class="container credits">
-    <span>©️ <span id="year"></span> Luma</span>
-    <span>Made with ♥️</span>
-  </div>
-</footer>
+  </footer>
 
 
-  <!-- Cart drawer -->
+  <!-- CART DRAWER -->
   <aside class="cart" id="cart" aria-label="Carrello" aria-hidden="true">
     <div class="cart-head">
       <strong>Carrello</strong>
@@ -260,21 +650,62 @@
   <!-- Back to top -->
   <button id="toTop" class="btn icon" aria-label="Torna su">↑</button>
 
+  <!-- JS -->
   <script>
-    // ====== DATA (mock) ======
+    // Catalogo corsi
     const COURSES = [
-      {id:'seo-found', title:'SEO Foundations', cat:'Performance', hours:5, rating:4.8, ratings:312, price:79, tag:['SEO','On-page','Keyword']},
-      {id:'ads-meta', title:'Meta Ads Bootcamp', cat:'Performance', hours:6, rating:4.7, ratings:201, price:99, tag:['Facebook','Instagram','ROAS']},
-      {id:'brand-strategy', title:'Brand Strategy Essentials', cat:'Brand', hours:4, rating:4.9, ratings:168, price:89, tag:['Positioning','Identity']},
-      {id:'copy-conv', title:'Copywriting per la Conversione', cat:'Content', hours:3, rating:4.8, ratings:289, price:69, tag:['Landing','CRO']},
-      {id:'tiktok-org', title:'TikTok Organic System', cat:'Content', hours:3, rating:4.6, ratings:142, price:59, tag:['Shorts','UGC']},
-      {id:'ga4', title:'GA4 e Attribution Basics', cat:'Analytics', hours:4, rating:4.6, ratings:120, price:79, tag:['Tracking','KPI']},
-      {id:'email-pro', title:'Email Marketing Pro', cat:'Performance', hours:4, rating:4.7, ratings:88, price:69, tag:['Automation','CRM']},
-      {id:'linkedin-brand', title:'LinkedIn Personal Brand', cat:'Brand', hours:3, rating:4.5, ratings:77, price:49, tag:['Networking','Authority']},
-      {id:'content-system', title:'Content System 2.0', cat:'Content', hours:5, rating:4.8, ratings:230, price:89, tag:['Pillar','Repurpose']},
+      {
+        id:'launch-basics',
+        title:'Digital Marketing Launch Kit',
+        cat:'Tutto',
+        hours:5,
+        rating:4.8,
+        ratings:312,
+        price:199,
+        tag:['SEO','Social','Email','Analytics']
+      },
+      {
+        id:'brand-lab',
+        title:'Brand & Content Lab',
+        cat:'Brand',
+        hours:4,
+        rating:4.9,
+        ratings:168,
+        price:249,
+        tag:['Branding','Story','Content']
+      },
+      {
+        id:'ads-performance-pro',
+        title:'Performance Ads Pro',
+        cat:'Performance',
+        hours:6,
+        rating:4.8,
+        ratings:201,
+        price:349,
+        tag:['Meta Ads','Funnel','CRO','ROAS']
+      },
+      {
+        id:'content-solo',
+        title:'Content System Express',
+        cat:'Content',
+        hours:2,
+        rating:4.7,
+        ratings:230,
+        price:79,
+        tag:['Pianificazione','Repurpose','Social']
+      },
+      {
+        id:'ads-sprint',
+        title:'Meta Ads Sprint',
+        cat:'Performance',
+        hours:3,
+        rating:4.7,
+        ratings:142,
+        price:99,
+        tag:['Meta Ads','A/B test','Budget piccoli']
+      }
     ];
 
-    // ====== STATE ======
     const state = {
       query: '',
       filter: 'tutto',
@@ -282,23 +713,24 @@
       theme: localStorage.getItem('luma_theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
     };
 
-    // ====== HELPERS ======
     const fmtPrice = n => '€' + n.toLocaleString('it-IT', { minimumFractionDigits: 0 });
     const starSVG = () => `<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
     const el = sel => document.querySelector(sel);
 
-    // ====== RENDER COURSES ======
     function renderCourses(){
       const grid = el('#courseGrid');
+      if (!grid) return;
+
       const q = state.query.trim().toLowerCase();
       const f = state.filter;
+
       const res = COURSES.filter(c => (f === 'tutto' || c.cat === f) &&
         (!q || c.title.toLowerCase().includes(q) || c.tag.join(' ').toLowerCase().includes(q)));
 
       grid.innerHTML = res.map(c => `
         <article class="card" data-id="${c.id}" data-cat="${c.cat}">
           <div class="card-media" aria-hidden="true">
-            ${c.cat === 'Performance' ? '📣' : c.cat === 'Brand' ? '✨' : c.cat === 'Analytics' ? '📊' : '📝'}
+            ${c.cat === 'Performance' ? '📣' : c.cat === 'Brand' ? '✨' : c.cat === 'Content' ? '📝' : '📊'}
           </div>
           <div class="card-body">
             <h3 class="card-title">${c.title}</h3>
@@ -316,12 +748,12 @@
           </div>
           <div class="card-footer">
             <button class="btn add" data-id="${c.id}" aria-label="Aggiungi ${c.title} al carrello">Aggiungi</button>
-            <button class="btn ghost" aria-label="Dettagli ${c.title}">Dettagli</button>
+            <a class="btn ghost" href="${c.id}.html" aria-label="Dettagli ${c.title}">Dettagli</a>
           </div>
         </article>
       `).join('') || `<div class="empty">Nessun corso trovato. Prova a cambiare ricerca o filtro.</div>`;
 
-      // Regola visibilità stelle in base al rating
+      // stelle piene/trasparenti
       const ratingsEls = grid.querySelectorAll('.rating');
       ratingsEls.forEach((rEl, idx) => {
         const c = res[idx];
@@ -334,8 +766,10 @@
       });
     }
 
-    // ====== CART ======
-    function saveCart(){ localStorage.setItem('luma_cart', JSON.stringify(state.cart)); }
+    function saveCart(){
+      localStorage.setItem('luma_cart', JSON.stringify(state.cart));
+    }
+
     function addToCartById(id, type='course'){
       const existing = state.cart.find(x => x.id === id && x.type === type);
       if (existing) {
@@ -343,7 +777,6 @@
       } else {
         let data;
         if (type === 'bundle') {
-          // definisci qui i prezzi dei bundle
           const bundlePrices = {
             'Growth Starter': 229,
             'Performance Pro': 349,
@@ -362,16 +795,21 @@
       renderCart();
       saveCart();
     }
+
     function removeFromCart(idx){
       state.cart.splice(idx, 1);
       renderCart();
       saveCart();
     }
+
     function cartTotal(){
       return state.cart.reduce((sum, it) => sum + it.price * it.qty, 0);
     }
+
     function renderCart(){
       const list = el('#cartList');
+      if (!list) return;
+
       if (state.cart.length === 0) {
         list.innerHTML = `<div class="empty">Il carrello è vuoto.</div>`;
         el('#cartTotal').textContent = '€0';
@@ -392,9 +830,9 @@
       `).join('');
       el('#cartTotal').textContent = fmtPrice(cartTotal());
     }
+
     window.removeFromCart = removeFromCart;
 
-    // ====== THEME ======
     function applyTheme(){
       if (state.theme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
@@ -404,39 +842,47 @@
       localStorage.setItem('luma_theme', state.theme);
     }
 
-    // ====== SETUP & EVENTI ======
     document.addEventListener('DOMContentLoaded', () => {
-      // anno nel footer
-      el('#year').textContent = new Date().getFullYear();
+      // anno footer
+      const yearEl = el('#year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-      // tema iniziale
+      // tema
       applyTheme();
-      el('#themeToggle').addEventListener('click', () => {
-        state.theme = (state.theme === 'light' ? 'dark' : 'light');
-        applyTheme();
-      });
+      const themeBtn = el('#themeToggle');
+      if (themeBtn){
+        themeBtn.addEventListener('click', () => {
+          state.theme = (state.theme === 'light' ? 'dark' : 'light');
+          applyTheme();
+        });
+      }
 
       // menu mobile
       const menuBtn = el('#menuBtn');
       const mobile = el('#mobileMenu');
-      menuBtn.addEventListener('click', () => {
-        const open = mobile.classList.toggle('open');
-        menuBtn.setAttribute('aria-expanded', open);
-      });
-      mobile.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          mobile.classList.remove('open');
-          menuBtn.setAttribute('aria-expanded', 'false');
+      if (menuBtn && mobile){
+        menuBtn.addEventListener('click', () => {
+          const open = mobile.classList.toggle('open');
+          menuBtn.setAttribute('aria-expanded', open);
         });
-      });
+        mobile.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => {
+            mobile.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
 
-      // ricerca input
-      el('#search').addEventListener('input', e => {
-        state.query = e.target.value;
-        renderCourses();
-      });
+      // ricerca input (se aggiungi la barra di ricerca in futuro)
+      const searchInput = el('#search');
+      if (searchInput){
+        searchInput.addEventListener('input', e => {
+          state.query = e.target.value;
+          renderCourses();
+        });
+      }
 
-      // filtri
+      // filtri (idem, se aggiungi i bottoni filtro)
       document.querySelectorAll('.filter').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.filter').forEach(b => b.classList.remove('is-active'));
@@ -446,18 +892,22 @@
         });
       });
 
-      // render corsi iniziali
+      // render iniziale griglia corsi dinamici (sezione catalogo futura)
       renderCourses();
 
-      // delega “Aggiungi al carrello” per corsi
-      el('#courseGrid').addEventListener('click', (e) => {
-        const add = e.target.closest('.add');
-        if (add && add.dataset.id) {
-          addToCartById(add.dataset.id, 'course');
-          openCart();
-        }
-      });
-      // aggiungi bundle
+      // delega “Aggiungi al carrello” per corsi dinamici
+      const courseGrid = el('#courseGrid');
+      if (courseGrid) {
+        courseGrid.addEventListener('click', (e) => {
+          const add = e.target.closest('.add');
+          if (add && add.dataset.id) {
+            addToCartById(add.dataset.id, 'course');
+            openCart();
+          }
+        });
+      }
+
+      // aggiungi bundle con data-bundle (se li aggiungi)
       document.querySelectorAll('[data-bundle]').forEach(b => {
         b.addEventListener('click', () => {
           addToCartById(b.dataset.bundle, 'bundle');
@@ -467,8 +917,9 @@
 
       // carrello open/close
       const cart = el('#cart');
-      el('#openCart').addEventListener('click', openCart);
-      el('#closeCart').addEventListener('click', closeCart);
+      const openCartBtn = el('#openCart');
+      const closeCartBtn = el('#closeCart');
+
       function openCart() {
         cart.classList.add('open');
         cart.setAttribute('aria-hidden', 'false');
@@ -477,27 +928,35 @@
         cart.classList.remove('open');
         cart.setAttribute('aria-hidden', 'true');
       }
-      window.openCart = openCart;
+      window.openCart = openCart; // esposto globalmente
+
+      if (openCartBtn) openCartBtn.addEventListener('click', openCart);
+      if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
 
       // render cart da storage
       renderCart();
 
       // checkout (demo)
-      el('#checkoutBtn').addEventListener('click', () => {
-        if (state.cart.length === 0) {
-          alert('Aggiungi qualcosa al carrello 😄');
-          return;
-        }
-        alert('Checkout demo: ' + fmtPrice(cartTotal()) + '\n(qui integrerai il pagamento reale)');
-      });
+      const checkoutBtn = el('#checkoutBtn');
+      if (checkoutBtn){
+        checkoutBtn.addEventListener('click', () => {
+          if (state.cart.length === 0) {
+            alert('Aggiungi qualcosa al carrello 😄');
+            return;
+          }
+          alert('Checkout demo: ' + fmtPrice(cartTotal()) + '\n(qui integrerai il pagamento reale)');
+        });
+      }
 
       // “Torna su”
       const toTop = el('#toTop');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) toTop.classList.add('show');
-        else toTop.classList.remove('show');
-      });
-      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      if (toTop){
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) toTop.classList.add('show');
+          else toTop.classList.remove('show');
+        });
+        toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
     });
   </script>
 </body>

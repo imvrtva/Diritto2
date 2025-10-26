@@ -106,10 +106,9 @@
   :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:8px}
 </style>
 </head>
-<body>
   <header aria-label="Barra di navigazione">
     <div class="container nav">
-      <a class="brand" href="/">
+      <a class="brand" href="index.html">
         <img src="logo.jpeg" alt="Logo di Luma" class="logo" />
         <span aria-label="Luma, home">Luma</span>
         <span class="chip" title="Formazione verificata">✔︎ Certificata</span>
@@ -118,16 +117,21 @@
       <nav aria-label="Primaria">
         <ul>
           <li><a href="index.html">Corsi</a></li>
-          <li><a href="/chi-siamo">Chi siamo</a></li>
+          <li><a href="chi-siamo.html">Chi siamo</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </nav>
 
       <div class="actions">
-        <button id="themeToggle" class="icon-btn" aria-label="Cambia tema" title="Tema chiaro/scuro">🌓</button>
-        <button id="openCart" class="icon-btn" aria-label="Apri carrello" title="Carrello">🛒</button>
         <button class="menu-toggle icon-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri menù">☰</button>
       </div>
+    </div>
+
+    <!-- barra secondaria sotto header -->
+    <div class="container header-ribbon">
+      <span class="chip">🚀 Impara oggi, applica domani</span>
+      <span class="chip">+10.000 studenti</span>
+      <span class="chip">📄 Certificazione inclusa</span>
     </div>
   </header>
 
@@ -248,39 +252,38 @@
     <span><a href="termini.html">Termini</a> · <a href="privacy.html">Privacy</a></span>
   </div>
   <footer>
-  <div class="container foot-grid">
-    <div class="foot-col">
-      <img src="logo.jpeg" alt="Logo di Luma" class="logo">
-      <p class="muted">Formazione concreta per chi vuole crescere nel Digital Marketing e nella Comunicazione.</p>
+    <div class="container foot-grid">
+      <div class="foot-col">
+        <img src="logo.jpeg" alt="Logo di Luma" class="logo">
+        <p class="muted">Formazione concreta per chi vuole crescere nel Digital Marketing e nella Comunicazione.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Corsi</h4>
+        <a href="#consigliati">Percorsi</a>
+        <a href="#percorsi">Bundle</a>
+        <a href="quiz.html">Trova il tuo corso</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="faq.html">FAQ</a>
+        <a href="termini.html">Termini</a>
+        <a href="#">Privacy</a>
+      </div>
     </div>
-    <div class="foot-col">
-      <h4>Corsi</h4>
-      <a href="#corsi">SEO</a>
-      <a href="#corsi">Social Ads</a>
-      <a href="#corsi">Brand</a>
-      <a href="#corsi">Analytics</a>
-    </div>
-    <div class="foot-col">
-      <h4>Legal</h4>
-      <a href="faq.html">FAQ</a>
-      <a href="termini.html">Termini</a>
-      <a href="#">Privacy</a>
-    </div>
-  </div>
 
-  <div class="container legal-info">
-    <p>
-      <strong>Luma S.R.L.S.</strong> – Sede legale: Fondamenta Rimpeto Mocenigo 2068, Venezia<br>
-      Contatti: <a href="mailto:marketing@luma.com">marketing@luma.com</a> – Tel: 041 8725435<br>
-      P.IVA: 12345670987 – Iscrizione REA: VE-4398127 – Foro competente: Venezia
-    </p>
-  </div>
+    <div class="container legal-info">
+      <p>
+        <strong>Luma S.R.L.S.</strong> – Sede legale: Fondamenta Rimpeto Mocenigo 2068, Venezia<br>
+        Contatti: <a href="mailto:marketing@luma.com">marketing@luma.com</a> – Tel: 041 8725435<br>
+        P.IVA: 12345670987 – Iscrizione REA: VE-4398127 – Foro competente: Venezia
+      </p>
+    </div>
 
-  <div class="container credits">
-    <span>©️ <span id="year"></span> Luma</span>
-    <span>Made with ♥️</span>
-  </div>
-</footer>
+    <div class="container credits">
+      <span>©️ <span id="year"></span> Luma</span>
+      <span>Made with ♥️</span>
+    </div>
+  </footer>
 </main>
 
 <!-- FAQ Schema (SEO) -->
