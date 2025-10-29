@@ -3,10 +3,10 @@
     --surface: #111318;
     --muted: #a6adbb;
     --text: #e7e9ee;
-    --brand: #7c5cff; /* viola Luma */
-    --brand-2:#27e1a1; /* accento */
+    --brand: #78CDD7; /* viola Luma */
+    --brand-2:hwb(252 36% 0%); /* accento */
     --stroke:#20242d;
-    --ok:#27e1a1;
+    --ok:hwb(252 36% 0%);
     --warn:#ffc861;
     --danger:#ff6b6b;
     --shadow: 0 10px 30px rgba(0,0,0,.35);
