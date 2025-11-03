@@ -295,7 +295,6 @@
           <div class="sep"></div>
 
           <div class="row"><span>Subtotale</span><strong id="sub">€0,00</strong></div>
-<div class="row"><span>IVA (22%)</span><strong id="vat">€0,00</strong></div>
 <div class="row total"><span>Totale</span><strong id="tot">€0,00</strong></div>
 
           <p class="help">Fatturazione immediata. Accesso ai contenuti entro 24h dal pagamento.</p>
@@ -441,11 +440,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // subtotale (post-sconto, mai sotto zero)
     const sub = Math.max(0, Number(cartItem.prezzo) - Number(discount));
 
-    // IVA al 22%
-    const iva = +(sub * 0.22).toFixed(2);
-
     // totale finale lordo
-    const tot = +(sub + iva).toFixed(2);
+    const tot = +(sub).toFixed(2);
 
     document.getElementById("sub").textContent = fmtEuro.format(sub);
     document.querySelector('[aria-labelledby="riepilogo"] #vat').textContent = fmtEuro.format(iva);
